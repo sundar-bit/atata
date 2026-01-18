@@ -1,0 +1,2194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ATATA - Arun Thondu Attriya Thamizhaga Andhanarkal - Celebrating the extraordinary contributions of Tamil Brahmins to Science & Mathematics">
+    <title>ATATA - அருந் தொண்டு ஆற்றிய தமிழக அந்தணர்கள்</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;500;600&family=Noto+Sans+Tamil:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- html2canvas for image export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <!-- jsPDF for PDF export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <style>
+        /* ==================== CSS Variables ==================== */
+        :root {
+            --primary-gold: #C9A227;
+            --primary-maroon: #722F37;
+            --deep-maroon: #4A1C23;
+            --cream: #FDF8F0;
+            --warm-white: #FFFEF9;
+            --text-dark: #000000;
+            --text-medium: #1a1a1a;
+            --accent-copper: #B87333;
+            --border-gold: #D4AF37;
+            --shadow-warm: rgba(114, 47, 55, 0.15);
+        }
+
+        /* ==================== Reset & Base Styles ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* ==================== Custom Scrollbar ==================== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--cream);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--primary-gold), var(--accent-copper));
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, var(--border-gold), var(--primary-gold));
+        }
+
+        /* ==================== Header ==================== */
+        header {
+            background: linear-gradient(135deg, var(--deep-maroon) 0%, var(--primary-maroon) 50%, var(--deep-maroon) 100%);
+            color: var(--warm-white);
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px var(--shadow-warm);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1600px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-emblem {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--border-gold) 50%, var(--accent-copper) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Noto Sans Tamil', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--deep-maroon);
+            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.4);
+            border: 2px solid var(--border-gold);
+            flex-shrink: 0;
+        }
+
+        .title-section {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            line-height: 1;
+        }
+
+        .tamil-subtitle {
+            font-family: 'Noto Sans Tamil', sans-serif;
+            font-size: 0.9rem;
+            color: var(--cream);
+            margin-top: 2px;
+            line-height: 1.2;
+        }
+
+        .english-translation {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 0.75rem;
+            color: rgba(253, 248, 240, 0.8);
+            font-style: italic;
+            line-height: 1.2;
+        }
+
+        .header-tagline {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.85rem;
+            color: var(--cream);
+            text-align: right;
+            max-width: 280px;
+            line-height: 1.3;
+            border-left: 2px solid var(--primary-gold);
+            padding-left: 12px;
+        }
+
+        /* ==================== Main Layout ==================== */
+        .main-container {
+            display: flex;
+            min-height: calc(100vh - 180px);
+        }
+
+        /* ==================== Sidebar ==================== */
+        .sidebar {
+            width: 320px;
+            background: linear-gradient(180deg, var(--warm-white) 0%, var(--cream) 100%);
+            border-right: 2px solid var(--border-gold);
+            position: sticky;
+            top: 75px;
+            height: calc(100vh - 75px);
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+
+        .sidebar-title {
+            background: linear-gradient(135deg, var(--primary-maroon), var(--deep-maroon));
+            color: var(--primary-gold);
+            padding: 20px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid var(--border-gold);
+        }
+
+        .sidebar-title i {
+            font-size: 1.2rem;
+        }
+
+        .category {
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .category-header {
+            background: linear-gradient(90deg, var(--primary-maroon), var(--deep-maroon));
+            color: var(--primary-gold);
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .category-header:hover {
+            background: linear-gradient(90deg, var(--deep-maroon), var(--primary-maroon));
+        }
+
+        .category-header.active {
+            background: linear-gradient(90deg, var(--accent-copper), var(--primary-maroon));
+        }
+
+        .category-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        .category-title i {
+            font-size: 1.1rem;
+        }
+
+        .category-chevron {
+            transition: transform 0.3s ease;
+        }
+
+        .category-header.active .category-chevron {
+            transform: rotate(180deg);
+        }
+
+        .person-list {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background: var(--warm-white);
+        }
+
+        .person-list.expanded {
+            max-height: 1000px;
+        }
+
+        .person-item {
+            padding: 12px 20px 12px 45px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            position: relative;
+        }
+
+        .person-item::before {
+            content: '✦';
+            position: absolute;
+            left: 25px;
+            color: var(--accent-copper);
+            font-size: 0.7rem;
+        }
+
+        .person-item:hover {
+            background: linear-gradient(90deg, rgba(201, 162, 39, 0.15), transparent);
+            color: var(--text-dark);
+            padding-left: 50px;
+        }
+
+        .person-item.active {
+            background: linear-gradient(90deg, rgba(201, 162, 39, 0.3), rgba(201, 162, 39, 0.1));
+            color: var(--primary-maroon);
+            font-weight: 600;
+            border-left: 3px solid var(--primary-gold);
+        }
+
+        /* ==================== Content Area ==================== */
+        .content {
+            flex: 1;
+            padding: 30px;
+            background: var(--cream);
+            min-width: 0;
+        }
+
+        /* ==================== Welcome Screen ==================== */
+        .welcome-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+            text-align: center;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .welcome-icon {
+            font-size: 5rem;
+            color: var(--primary-gold);
+            margin-bottom: 30px;
+            text-shadow: 3px 3px 6px var(--shadow-warm);
+        }
+
+        .welcome-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-maroon);
+            margin-bottom: 15px;
+        }
+
+        .welcome-subtitle {
+            font-family: 'Noto Sans Tamil', sans-serif;
+            font-size: 1.3rem;
+            color: var(--text-medium);
+            margin-bottom: 25px;
+        }
+
+        .welcome-description {
+            max-width: 600px;
+            color: var(--text-medium);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .welcome-instruction {
+            background: linear-gradient(135deg, var(--warm-white), var(--cream));
+            border: 2px solid var(--border-gold);
+            border-radius: 10px;
+            padding: 20px 30px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 15px var(--shadow-warm);
+        }
+
+        .welcome-instruction i {
+            font-size: 1.5rem;
+            color: var(--primary-gold);
+        }
+
+        /* ==================== Profile Card ==================== */
+        .profile-card {
+            display: none;
+            background: var(--warm-white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px var(--shadow-warm);
+            border: 2px solid var(--border-gold);
+            animation: fadeIn 0.5s ease;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .profile-card.active {
+            display: block;
+        }
+
+        .profile-header {
+            background: linear-gradient(135deg, var(--primary-maroon) 0%, var(--deep-maroon) 100%);
+            padding: 30px;
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
+        }
+
+        .profile-image-container {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .profile-image {
+            width: 160px;
+            height: 200px;
+            border-radius: 10px;
+            border: 4px solid var(--primary-gold);
+            background: linear-gradient(135deg, var(--cream), var(--warm-white));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary-maroon);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(40%) contrast(1.1) brightness(1.05);
+            transition: filter 0.3s ease;
+        }
+
+        .profile-image img:hover {
+            filter: sepia(20%) contrast(1.1) brightness(1.1);
+        }
+
+        .profile-info {
+            flex: 1;
+            color: var(--warm-white);
+        }
+
+        .profile-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-gold);
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .profile-dates {
+            font-size: 1rem;
+            color: rgba(253, 248, 240, 0.9);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .profile-dates i {
+            color: var(--primary-gold);
+        }
+
+        .profile-tagline {
+            font-style: italic;
+            color: var(--cream);
+            line-height: 1.5;
+            padding-left: 15px;
+            border-left: 3px solid var(--primary-gold);
+        }
+
+        .profile-body {
+            padding: 30px;
+            background: var(--cream);
+        }
+
+        /* ==================== Info Grid ==================== */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .info-card {
+            background: var(--warm-white);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 4px 15px var(--shadow-warm);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--shadow-warm);
+        }
+
+        .info-card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .info-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: var(--primary-maroon);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border-gold);
+        }
+
+        .info-card-title i {
+            color: var(--primary-gold);
+        }
+
+        .info-card-content {
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+
+        /* ==================== Sections ==================== */
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--primary-maroon);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-gold);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--primary-gold);
+        }
+
+        .achievements-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .achievements-list li {
+            padding: 10px 0 10px 30px;
+            position: relative;
+            color: var(--text-medium);
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .achievements-list li:last-child {
+            border-bottom: none;
+        }
+
+        .achievements-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 5px;
+            color: var(--primary-gold);
+            font-size: 0.9rem;
+        }
+
+        .impact-text {
+            color: var(--text-medium);
+            line-height: 1.8;
+            background: var(--warm-white);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-gold);
+        }
+
+        /* ==================== Awards ==================== */
+        .awards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .award-badge {
+            background: linear-gradient(135deg, var(--primary-gold), var(--accent-copper));
+            color: var(--deep-maroon);
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(201, 162, 39, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid var(--border-gold);
+        }
+
+        .award-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(201, 162, 39, 0.4);
+        }
+
+        /* ==================== Action Buttons ==================== */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding-top: 20px;
+            border-top: 2px solid var(--border-gold);
+        }
+
+        .action-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--shadow-warm);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--shadow-warm);
+        }
+
+        .btn-image {
+            background: linear-gradient(135deg, var(--primary-maroon), var(--deep-maroon));
+            color: var(--warm-white);
+        }
+
+        .btn-pdf {
+            background: linear-gradient(135deg, var(--primary-gold), var(--accent-copper));
+            color: var(--deep-maroon);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+        }
+
+        /* ==================== Footer ==================== */
+        footer {
+            background: linear-gradient(135deg, var(--deep-maroon) 0%, var(--primary-maroon) 100%);
+            color: var(--cream);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .visitor-counter {
+            background: linear-gradient(135deg, var(--primary-gold), var(--accent-copper));
+            color: var(--deep-maroon);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
+        }
+
+        .footer-copyright {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: var(--primary-gold);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .footer-credits {
+            font-size: 0.9rem;
+            color: rgba(253, 248, 240, 0.8);
+            line-height: 1.8;
+        }
+
+        .footer-credits strong {
+            color: var(--cream);
+        }
+
+        .footer-disclaimer {
+            font-size: 0.8rem;
+            color: rgba(253, 248, 240, 0.6);
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        /* ==================== Animations ==================== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ==================== Responsive Design ==================== */
+        @media (max-width: 1024px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-left {
+                flex-direction: column;
+            }
+
+            .header-tagline {
+                text-align: center;
+                border-left: none;
+                border-top: 2px solid var(--primary-gold);
+                padding-left: 0;
+                padding-top: 15px;
+                max-width: 100%;
+            }
+
+            .main-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: relative;
+                top: 0;
+                height: auto;
+                max-height: 400px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2rem;
+            }
+
+            .logo-emblem {
+                width: 60px;
+                height: 60px;
+                font-size: 26px;
+            }
+
+            .profile-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .profile-tagline {
+                border-left: none;
+                border-top: 3px solid var(--primary-gold);
+                padding-left: 0;
+                padding-top: 15px;
+            }
+
+            .profile-name {
+                font-size: 1.5rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .action-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .welcome-title {
+                font-size: 1.8rem;
+            }
+
+            .welcome-icon {
+                font-size: 3.5rem;
+            }
+        }
+
+        /* ==================== Print Styles ==================== */
+        @media print {
+            .sidebar,
+            .action-buttons,
+            header,
+            footer {
+                display: none !important;
+            }
+
+            .content {
+                padding: 0;
+            }
+
+            .profile-card {
+                box-shadow: none;
+                border: 2px solid var(--primary-maroon);
+            }
+
+            .main-container {
+                display: block;
+            }
+        }
+
+        /* ==================== Mobile Menu Toggle ==================== */
+        .mobile-menu-toggle {
+            display: none;
+            background: var(--primary-gold);
+            color: var(--deep-maroon);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 10px;
+        }
+
+        @media (max-width: 1024px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .sidebar.collapsed {
+                max-height: 60px;
+                overflow: hidden;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="header-left">
+                <div class="logo-emblem">அ</div>
+                <div class="title-section">
+                    <h1 class="main-title">ATATA</h1>
+                    <div class="tamil-subtitle">அருந் தொண்டு ஆற்றிய தமிழக அந்தணர்கள்</div>
+                    <div class="english-translation">(Arun Thondu Attriya Thamizhaga Andhanarkal - Tamil Brahmins who rendered rare service)</div>
+                </div>
+            </div>
+            <div class="header-tagline">
+                Celebrating the extraordinary contributions of Tamil Brahmins to Science, Mathematics, Politics & Defense
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-title">
+                <i class="fas fa-users"></i>
+                Distinguished Luminaries
+            </div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i> Toggle Menu
+            </button>
+
+            <!-- Science Category -->
+            <div class="category">
+                <div class="category-header active" onclick="toggleCategory(this)">
+                    <div class="category-title">
+                        <i class="fas fa-atom"></i>
+                        Science
+                    </div>
+                    <i class="fas fa-chevron-down category-chevron"></i>
+                </div>
+                <div class="person-list expanded">
+                    <div class="person-item" onclick="showProfile('SCI', 0)">Sir C.V. Raman</div>
+                    <div class="person-item" onclick="showProfile('SCI', 1)">Dr. S. Chandrasekhar</div>
+                    <div class="person-item" onclick="showProfile('SCI', 2)">Dr. Venkatraman Ramakrishnan</div>
+                    <div class="person-item" onclick="showProfile('SCI', 3)">Dr. M.S. Swaminathan</div>
+                    <div class="person-item" onclick="showProfile('SCI', 4)">Prof. G.N. Ramachandran</div>
+                    <div class="person-item" onclick="showProfile('SCI', 5)">Sir K.S. Krishnan</div>
+                    <div class="person-item" onclick="showProfile('SCI', 6)">Dr. V.S. Ramachandran</div>
+                    <div class="person-item" onclick="showProfile('SCI', 7)">Dr. R. Chidambaram</div>
+                    <div class="person-item" onclick="showProfile('SCI', 8)">Dr. T.R. Govindachari</div>
+                    <div class="person-item" onclick="showProfile('SCI', 9)">Dr. K. Venkataraman</div>
+                    <div class="person-item" onclick="showProfile('SCI', 10)">Sir T.S. Venkataraman</div>
+                    <div class="person-item" onclick="showProfile('SCI', 11)">Prof. M.S. Ananth</div>
+                    <div class="person-item" onclick="showProfile('SCI', 12)">Dr. G.S. Venkataraman</div>
+                    <div class="person-item" onclick="showProfile('SCI', 13)">V. Sasisekharan</div>
+                </div>
+            </div>
+
+            <!-- Mathematics Category -->
+            <div class="category">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div class="category-title">
+                        <i class="fas fa-calculator"></i>
+                        Mathematics
+                    </div>
+                    <i class="fas fa-chevron-down category-chevron"></i>
+                </div>
+                <div class="person-list">
+                    <div class="person-item" onclick="showProfile('MTH', 0)">Srinivasa Ramanujan</div>
+                    <div class="person-item" onclick="showProfile('MTH', 1)">Prof. Alladi Ramakrishnan</div>
+                    <div class="person-item" onclick="showProfile('MTH', 2)">Prof. K. Chandrasekharan</div>
+                    <div class="person-item" onclick="showProfile('MTH', 3)">Prof. C.S. Seshadri</div>
+                    <div class="person-item" onclick="showProfile('MTH', 4)">Prof. M.S. Narasimhan</div>
+                    <div class="person-item" onclick="showProfile('MTH', 5)">Dr. S. Minakshisundaram</div>
+                    <div class="person-item" onclick="showProfile('MTH', 6)">Prof. K. Ananda Rau</div>
+                    <div class="person-item" onclick="showProfile('MTH', 7)">Dr. T. Vijayaraghavan</div>
+                    <div class="person-item" onclick="showProfile('MTH', 8)">Prof. V. Ganapathy Iyer</div>
+                    <div class="person-item" onclick="showProfile('MTH', 9)">Prof. Raghava Sasthri</div>
+                </div>
+            </div>
+
+            <!-- Politics Category -->
+            <div class="category">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div class="category-title">
+                        <i class="fas fa-landmark"></i>
+                        Politics
+                    </div>
+                    <i class="fas fa-chevron-down category-chevron"></i>
+                </div>
+                <div class="person-list">
+                    <div class="person-item" onclick="showProfile('POL', 0)">C. Rajagopalachari (Rajaji)</div>
+                    <div class="person-item" onclick="showProfile('POL', 1)">Sir C.P. Ramaswami Iyer</div>
+                    <div class="person-item" onclick="showProfile('POL', 2)">T.T. Krishnamachari</div>
+                    <div class="person-item" onclick="showProfile('POL', 3)">C.R. Pattabhiraman</div>
+                    <div class="person-item" onclick="showProfile('POL', 4)">K. Santhanam</div>
+                    <div class="person-item" onclick="showProfile('POL', 5)">N. Gopalaswami Iyengar</div>
+                    <div class="person-item" onclick="showProfile('POL', 6)">R. Venkataraman</div>
+                    <div class="person-item" onclick="showProfile('POL', 7)">Dr. H.V. Hande</div>
+                </div>
+            </div>
+
+            <!-- Defense Category -->
+            <div class="category">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div class="category-title">
+                        <i class="fas fa-shield-alt"></i>
+                        Defense
+                    </div>
+                    <i class="fas fa-chevron-down category-chevron"></i>
+                </div>
+                <div class="person-list">
+                    <div class="person-item" onclick="showProfile('DEF', 0)">General K. Sundarji</div>
+                    <div class="person-item" onclick="showProfile('DEF', 1)">Col. V. Srinivasa</div>
+                    <div class="person-item" onclick="showProfile('DEF', 2)">Air Marshal R. Rajaram</div>
+                    <div class="person-item" onclick="showProfile('DEF', 3)">Vice Admiral N. Krishnan</div>
+                    <div class="person-item" onclick="showProfile('DEF', 4)">Major Mukund Varadarajan</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content">
+            <!-- Welcome Screen -->
+            <div class="welcome-screen" id="welcomeScreen">
+                <div class="welcome-icon">
+                    <i class="fas fa-om"></i>
+                </div>
+                <h2 class="welcome-title">Welcome to ATATA</h2>
+                <div class="welcome-subtitle">அருந் தொண்டு ஆற்றிய தமிழக அந்தணர்கள்</div>
+                <p class="welcome-description">
+                    Explore the remarkable lives and contributions of Tamil Brahmins who have made extraordinary
+                    contributions to Science and Mathematics. Their discoveries, innovations, and dedication
+                    have shaped the world we live in today.
+                </p>
+                <div class="welcome-instruction">
+                    <i class="fas fa-hand-pointer"></i>
+                    <span>Select a luminary from the sidebar to view their profile</span>
+                </div>
+            </div>
+
+            <!-- Profile Card -->
+            <div class="profile-card" id="profileCard">
+                <div class="profile-header">
+                    <div class="profile-image-container">
+                        <div class="profile-image" id="profileImage">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                    <div class="profile-info">
+                        <h2 class="profile-name" id="profileName">Name</h2>
+                        <div class="profile-dates" id="profileDates">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Birth - Death</span>
+                        </div>
+                        <div class="profile-tagline" id="profileTagline">
+                            Brief achievement description
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-body">
+                    <!-- Info Grid -->
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <div class="info-card-title">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Birthplace
+                            </div>
+                            <div class="info-card-content" id="birthplaceContent">
+                                Place details
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-card-title">
+                                <i class="fas fa-users"></i>
+                                Parents
+                            </div>
+                            <div class="info-card-content" id="parentsContent">
+                                Parent details
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-card-title">
+                                <i class="fas fa-school"></i>
+                                Schooling
+                            </div>
+                            <div class="info-card-content" id="schoolingContent">
+                                School details
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-card-title">
+                                <i class="fas fa-university"></i>
+                                College/University
+                            </div>
+                            <div class="info-card-content" id="collegeContent">
+                                College details
+                            </div>
+                        </div>
+                        <div class="info-card full-width">
+                            <div class="info-card-title">
+                                <i class="fas fa-briefcase"></i>
+                                Career
+                            </div>
+                            <div class="info-card-content" id="careerContent">
+                                Career details
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Key Achievements Section -->
+                    <div class="section">
+                        <h3 class="section-title">
+                            <i class="fas fa-star"></i>
+                            Key Achievements
+                        </h3>
+                        <ul class="achievements-list" id="achievementsList">
+                            <!-- Achievements will be populated dynamically -->
+                        </ul>
+                    </div>
+
+                    <!-- Impact on Society Section -->
+                    <div class="section">
+                        <h3 class="section-title">
+                            <i class="fas fa-globe"></i>
+                            Impact on Society
+                        </h3>
+                        <div class="impact-text" id="impactText">
+                            Impact description
+                        </div>
+                    </div>
+
+                    <!-- Awards Section -->
+                    <div class="section">
+                        <h3 class="section-title">
+                            <i class="fas fa-trophy"></i>
+                            Awards & Recognition
+                        </h3>
+                        <div class="awards-container" id="awardsContainer">
+                            <!-- Awards will be populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons" id="actionButtons">
+                        <button class="action-btn btn-image" onclick="saveAsImage()">
+                            <i class="fas fa-image"></i>
+                            Save as Image
+                        </button>
+                        <button class="action-btn btn-pdf" onclick="saveAsPDF()">
+                            <i class="fas fa-file-pdf"></i>
+                            Save as PDF
+                        </button>
+                        <button class="action-btn btn-whatsapp" onclick="shareOnWhatsApp()">
+                            <i class="fab fa-whatsapp"></i>
+                            Share on WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="visitor-counter">
+            <i class="fas fa-eye"></i>
+            <span>Visitors: <strong id="visitorCount">0</strong></span>
+        </div>
+        <div class="footer-copyright">
+            © 2026 ATATA - Arun Thondu Attriya Thamizhaga Andhanarkal
+        </div>
+        <div class="footer-credits">
+            Developed by <strong>Suraja Technologies</strong> |
+            Powered by <strong>Jignyashika Consulting</strong> |
+            Under the guidance of <strong>Dr. Sundararaman Chintamani</strong>
+        </div>
+        <div class="footer-disclaimer">
+            Images used are for representation purposes only. All trademarks belong to their respective owners.
+        </div>
+    </footer>
+
+    <script>
+        // ==================== Profile Data ====================
+        const profiles = {
+            SCI: [
+                // 0 - Sir C.V. Raman
+                {
+                    name: "Sir Chandrasekhara Venkata Raman",
+                    shortName: "Sir C.V. Raman",
+                    image: "CV Raman.jpeg",
+                    birth: "November 7, 1888",
+                    death: "November 21, 1970",
+                    birthPlace: "Tiruchirappalli, Tamil Nadu",
+                    district: "Tiruchirappalli District",
+                    parents: "Father: Chandrasekhar Ramanathan Iyer (Physics & Mathematics Lecturer), Mother: Parvathi Ammal",
+                    schooling: "St. Aloysius' Anglo-Indian High School, Visakhapatnam (Matriculated at age 11)",
+                    college: "Presidency College, Madras - B.A. (1904, age 16) & M.A. (1907, age 18)",
+                    jobs: "Indian Finance Department (1907-1917), Palit Professor of Physics at University of Calcutta (1917-1933), Director of Indian Institute of Science, Bangalore (1933-1948), Founder-Director of Raman Research Institute (1948-1970)",
+                    achievements: [
+                        "Discovered the Raman Effect (1928) - demonstrating that light changes wavelength when scattered through transparent materials",
+                        "First Asian and non-White person to win the Nobel Prize in Physics (1930)",
+                        "Founded the Indian Academy of Sciences (1934)",
+                        "Established the Raman Research Institute, Bangalore (1948)",
+                        "Founded the Indian Journal of Physics (1926)",
+                        "Pioneered research in acoustics, optics, and crystallography"
+                    ],
+                    impact: "Revolutionized spectroscopy and molecular analysis worldwide. The Raman Effect became a fundamental tool in chemistry, physics, and medicine for analyzing material composition. National Science Day (February 28) commemorates his discovery. Mentored future scientific leaders including Homi Bhabha and Vikram Sarabhai.",
+                    awards: ["Nobel Prize in Physics (1930)", "Bharat Ratna (1954)", "Lenin Peace Prize (1957)", "Fellow of the Royal Society (1924)", "Knighthood (1929)", "Hughes Medal"]
+                },
+                // 1 - Dr. S. Chandrasekhar
+                {
+                    name: "Dr. Subrahmanyan Chandrasekhar",
+                    shortName: "Dr. S. Chandrasekhar",
+                    image: "S.Chandrasekar.jpg",
+                    birth: "October 19, 1910",
+                    death: "August 21, 1995",
+                    birthPlace: "Lahore, British India (now Pakistan)",
+                    district: "Tamil Brahmin family settled in Madras",
+                    parents: "Father: Chandrasekhara Subrahmanya Ayyar (Deputy Auditor General), Mother: Sita Balakrishnan (translated Ibsen's 'A Doll's House' into Tamil)",
+                    schooling: "Hindu High School, Madras",
+                    college: "Presidency College, Madras (1925-1930), Trinity College, Cambridge - PhD (1933)",
+                    jobs: "Fellow at Trinity College, Cambridge (1933-1937), University of Chicago - Professor of Astrophysics (1938-1995), Morton D. Hull Distinguished Service Professor",
+                    achievements: [
+                        "Chandrasekhar Limit - the maximum mass of a stable white dwarf star (~1.4 solar masses)",
+                        "Nobel Prize in Physics (1983) for theoretical studies of stellar structure and evolution",
+                        "Contributions to radiative transfer, stellar dynamics, and black hole theory",
+                        "Managing Editor of Astrophysical Journal for 19 years (1952-1971)",
+                        "Author of 'An Introduction to the Study of Stellar Structure' and other seminal works",
+                        "Nephew of Nobel Laureate C.V. Raman"
+                    ],
+                    impact: "Fundamentally changed our understanding of stellar evolution and the fate of massive stars. The Chandrasekhar Limit is crucial for understanding supernovae and neutron stars. NASA named the Chandra X-ray Observatory in his honor.",
+                    awards: ["Nobel Prize in Physics (1983)", "Copley Medal of Royal Society (1984)", "National Medal of Science, USA (1966)", "Padma Vibhushan (1968)", "Fellow of the Royal Society (1944)"]
+                },
+                // 2 - Dr. Venkatraman Ramakrishnan (NEW)
+                {
+                    name: "Dr. Venkatraman Ramakrishnan",
+                    shortName: "Dr. Venkatraman Ramakrishnan",
+                    image: "Dr. Venkatraman Ramakrishnan.jpg",
+                    birth: "1952",
+                    death: "Living",
+                    birthPlace: "Chidambaram, Tamil Nadu",
+                    district: "Cuddalore District",
+                    parents: "Father: C.V. Ramakrishnan (Biochemist), Mother: Rajalakshmi (Psychologist)",
+                    schooling: "Convent of Jesus and Mary, Baroda; Annamalai University",
+                    college: "Maharaja Sayajirao University, Baroda - B.Sc. in Physics (1971), Ohio University - Ph.D. in Physics (1976), Yale University - Graduate studies in Biology",
+                    jobs: "MRC Laboratory of Molecular Biology, Cambridge, UK; President of Royal Society (2015-2020)",
+                    achievements: [
+                        "Nobel Prize in Chemistry (2009) for studies on ribosome structure and function",
+                        "Determined atomic structure of the 30S ribosomal subunit",
+                        "Pioneering work using X-ray crystallography to map ribosome",
+                        "President of the Royal Society (2015-2020)",
+                        "Third Indian-origin scientist to win Nobel Prize in science",
+                        "Authored 'Gene Machine: The Race to Decipher the Secrets of the Ribosome'"
+                    ],
+                    impact: "His work on ribosome structure revolutionized understanding of how genetic information is translated into proteins. This has profound implications for understanding antibiotics and developing new drugs. His Nobel-winning research opened new frontiers in molecular biology.",
+                    awards: ["Nobel Prize in Chemistry (2009)", "Knight Bachelor (2012)", "Padma Vibhushan (2010)", "Fellow of the Royal Society", "Member of US National Academy of Sciences"]
+                },
+                // 3 - Dr. M.S. Swaminathan
+                {
+                    name: "Dr. Mankombu Sambasivan Swaminathan",
+                    shortName: "Dr. M.S. Swaminathan",
+                    image: "Monkombu_Sambasivan_Swaminathan_-_Kolkata_2013-01-07_2674.jpeg",
+                    birth: "August 7, 1925",
+                    death: "September 28, 2023",
+                    birthPlace: "Kumbakonam, Tamil Nadu",
+                    district: "Thanjavur District",
+                    parents: "Father: M.K. Sambasivan (Surgeon), Mother: Parvati Thangammal",
+                    schooling: "Catholic Little Flower High School, Kumbakonam",
+                    college: "Maharaja's College, Trivandrum - B.Sc., Coimbatore Agricultural College - B.Sc. Agriculture, IARI New Delhi - Post-graduate, Cambridge University - Ph.D.",
+                    jobs: "Director General of ICAR, Director General of IRRI (Philippines), Chairman of M.S. Swaminathan Research Foundation, Member of Parliament (Rajya Sabha)",
+                    achievements: [
+                        "Father of the Green Revolution in India",
+                        "Developed high-yielding wheat and rice varieties that saved millions from famine",
+                        "Pioneered sustainable agriculture and food security initiatives",
+                        "Founded M.S. Swaminathan Research Foundation (1988)",
+                        "Advocated for farmers' rights and evergreen revolution",
+                        "Chaired the National Commission on Farmers"
+                    ],
+                    impact: "Transformed India from a food-deficient nation to a food-surplus country. His work on high-yielding crop varieties during the 1960s prevented widespread famine and saved countless lives. Called 'the father of economic ecology' by the United Nations.",
+                    awards: ["Padma Shri (1967)", "Padma Bhushan (1972)", "Padma Vibhushan (1989)", "Ramon Magsaysay Award (1971)", "World Food Prize (1987)", "First World Food Prize Laureate", "Bharat Ratna (2024, posthumous)"]
+                },
+                // 4 - Prof. G.N. Ramachandran
+                {
+                    name: "Prof. Gopalasamudram Narayana Ramachandran",
+                    shortName: "Prof. G.N. Ramachandran",
+                    image: "Prof. Gopalasamudram Narayanan Ramachandran.png",
+                    birth: "October 8, 1922",
+                    death: "April 7, 2001",
+                    birthPlace: "Ernakulam, Kerala",
+                    district: "Tamil Brahmin family",
+                    parents: "Father: G.R. Narayana Iyer (Professor of Mathematics)",
+                    schooling: "Maharaja's College, Ernakulam",
+                    college: "Maharaja's College, Ernakulam - B.Sc. (1942), St. Stephen's College, Delhi - M.Sc. (1944), Cambridge University - Ph.D. under Raman (1949)",
+                    jobs: "Professor at University of Madras (1952-1970), Head of Molecular Biophysics Unit, IISc (1971-1978), Professor at University of Chicago",
+                    achievements: [
+                        "Created the Ramachandran Plot - fundamental tool for understanding protein structure",
+                        "Proposed the triple helical structure of collagen",
+                        "Founded molecular biophysics in India",
+                        "Pioneering work in X-ray crystallography",
+                        "Developed convolution and its applications",
+                        "Authored over 200 research papers"
+                    ],
+                    impact: "The Ramachandran Plot is used by every structural biologist worldwide. His work on collagen structure is fundamental to understanding connective tissue. Established the field of molecular biophysics in India.",
+                    awards: ["Fellow of the Royal Society (1977)", "Shanti Swarup Bhatnagar Prize (1961)", "Padma Bhushan", "Ewald Prize (International Union of Crystallography)", "Nominated for Nobel Prize multiple times"]
+                },
+                // 5 - Sir K.S. Krishnan
+                {
+                    name: "Sir Kariamanickam Srinivasa Krishnan",
+                    shortName: "Sir K.S. Krishnan",
+                    image: "Kariamanickam Srinivasa Krishnan.jpeg",
+                    birth: "December 4, 1898",
+                    death: "June 14, 1961",
+                    birthPlace: "Watrap, Tamil Nadu",
+                    district: "Virudhunagar District",
+                    parents: "Father: Srinivasa Iyer (Revenue Officer)",
+                    schooling: "Hindu High School, Srivilliputtur",
+                    college: "American College, Madurai - B.A. (1918), Madras Christian College - M.A. (1920)",
+                    jobs: "Assistant to C.V. Raman at IACS (1920-1928), Professor of Physics at University of Dacca (1928-1933), Professor at University of Allahabad (1933-1942), Director of National Physical Laboratory (1947-1961)",
+                    achievements: [
+                        "Co-discovered the Raman Effect with C.V. Raman (1928)",
+                        "Pioneering work in magnetism and crystal physics",
+                        "Established National Physical Laboratory, New Delhi as a premier research institution",
+                        "First Director of NPL and shaped India's measurement standards",
+                        "Pioneering research on magnetic anisotropy of crystals",
+                        "Significant contributions to theoretical physics"
+                    ],
+                    impact: "Played a crucial role in establishing India's scientific infrastructure. Built NPL into a world-class institution. His work on crystal physics and magnetism laid foundations for material science research in India.",
+                    awards: ["Fellow of the Royal Society (1940)", "Padma Bhushan (1954)", "Knighthood (1946)", "Bhatnagar Prize"]
+                },
+                // 6 - Dr. V.S. Ramachandran (NEW)
+                {
+                    name: "Dr. Vilayanur Subramanian Ramachandran",
+                    shortName: "Dr. V.S. Ramachandran",
+                    image: "Vilayanur_S_Ramachandran.jpeg",
+                    birth: "1951",
+                    death: "Living",
+                    birthPlace: "Tamil Nadu",
+                    district: "Tamil Brahmin family",
+                    parents: "Father: V.M. Subramanian (Diplomat and Engineer)",
+                    schooling: "Stanley Medical College, Madras",
+                    college: "Stanley Medical College, Madras - MBBS, Trinity College, Cambridge - Ph.D.",
+                    jobs: "Professor of Neuroscience at University of California, San Diego; Director of Center for Brain and Cognition",
+                    achievements: [
+                        "Pioneering research on phantom limbs and mirror neurons",
+                        "Developed mirror box therapy for phantom limb pain",
+                        "Discovered key insights into synesthesia and visual perception",
+                        "Named in TIME 100 most influential people (2011)",
+                        "Author of 'Phantoms in the Brain' and 'The Tell-Tale Brain'",
+                        "Pioneered behavioral neurology approaches"
+                    ],
+                    impact: "Revolutionized understanding of brain plasticity and sensory perception. His mirror therapy is now used worldwide for treating phantom limb pain and stroke rehabilitation. Called 'the Marco Polo of neuroscience' by Richard Dawkins.",
+                    awards: ["Padma Bhushan (2014)", "Henry Dale Prize (Royal Institution)", "Ariens Kappers Medal", "Fellow of All Souls College Oxford", "TIME 100 Most Influential (2011)"]
+                },
+                // 7 - Dr. R. Chidambaram
+                {
+                    name: "Dr. Rajagopala Chidambaram",
+                    shortName: "Dr. R. Chidambaram",
+                    image: "Chidambaram.jpeg",
+                    birth: "November 12, 1936",
+                    death: "Living",
+                    birthPlace: "Madras (Chennai), Tamil Nadu",
+                    district: "Chennai",
+                    parents: "Details being researched",
+                    schooling: "Details being researched",
+                    college: "Presidency College, Madras - B.Sc., Indian Institute of Science - Ph.D. in Physics",
+                    jobs: "Chairman of Atomic Energy Commission (1993-2000), Principal Scientific Adviser to Govt. of India (2001-2018), Director of BARC",
+                    achievements: [
+                        "Led India's nuclear tests - Pokhran-I (1974) and Pokhran-II (1998)",
+                        "Chairman of Atomic Energy Commission for 7 years",
+                        "Principal Scientific Adviser to three Prime Ministers",
+                        "Pioneering research in neutron diffraction and crystallography",
+                        "Developed India's nuclear energy and weapons program",
+                        "Longest-serving Principal Scientific Adviser (17 years)"
+                    ],
+                    impact: "Instrumental in establishing India as a nuclear power. His leadership of Pokhran-II demonstrated India's nuclear capability. Shaped India's science and technology policy for nearly two decades.",
+                    awards: ["Padma Shri (1975)", "Padma Vibhushan (1999)", "Shanti Swarup Bhatnagar Prize", "Fellow of Royal Society", "C.V. Raman Medal"]
+                },
+                // 8 - Dr. T.R. Govindachari
+                {
+                    name: "Dr. Tiruvenkatacharya Rajagopalan Govindachari",
+                    shortName: "Dr. T.R. Govindachari",
+                    image: "Tuticorin Raghavachari Govindachari.png",
+                    birth: "December 23, 1915",
+                    death: "January 13, 2001",
+                    birthPlace: "Thiruvananthapuram, Kerala",
+                    district: "Tamil Brahmin Family",
+                    parents: "Details being researched",
+                    schooling: "Details being researched",
+                    college: "Presidency College, Madras - M.Sc., University of Manchester - Ph.D. under Alexander Todd",
+                    jobs: "Professor at Presidency College, Head of CIBA Research Centre (Bombay), Consultant to pharmaceutical industry",
+                    achievements: [
+                        "One of India's greatest organic chemists",
+                        "Isolated and identified structures of over 150 alkaloids",
+                        "Pioneering work on Indian medicinal plants",
+                        "Authored over 400 research papers",
+                        "Developed new synthetic methodologies",
+                        "Trained generations of Indian chemists"
+                    ],
+                    impact: "Revolutionized the study of Indian medicinal plants. His work on alkaloids laid the foundation for pharmaceutical research in India. Created a school of natural product chemistry that continues to influence drug discovery.",
+                    awards: ["Shanti Swarup Bhatnagar Prize (1959)", "Fellow of the Royal Society (1972)", "Padma Bhushan (1974)", "INSA Award"]
+                },
+                // 9 - Dr. K. Venkataraman
+                {
+                    name: "Dr. Krishnasami Venkataraman",
+                    shortName: "Dr. K. Venkataraman",
+                    image: "Dr. Krishnasami Venkataraman.png",
+                    birth: "June 7, 1901",
+                    death: "May 16, 1981",
+                    birthPlace: "Sattur, Tamil Nadu",
+                    district: "Virudhunagar District",
+                    parents: "Father: Krishnasami Iyer",
+                    schooling: "Sattur High School",
+                    college: "Madras University - M.Sc., Manchester University - D.Sc. under Robert Robinson",
+                    jobs: "Director of National Chemical Laboratory (1957-1966), Professor at University of Mumbai, Consultant to Dyestuffs industry",
+                    achievements: [
+                        "Pioneer in synthetic organic chemistry and natural product chemistry",
+                        "Authority on flavonoid chemistry - authored 'Chemistry of Flavonoid Compounds'",
+                        "Developed indigenous processes for dyes and pharmaceuticals",
+                        "Director of NCL during its formative years",
+                        "Authored over 500 research papers",
+                        "Trained hundreds of chemists"
+                    ],
+                    impact: "Made India self-reliant in dyes and intermediates. His work on flavonoids is a classic reference in the field. Established a strong tradition of organic chemistry research in India.",
+                    awards: ["Shanti Swarup Bhatnagar Prize", "Padma Bhushan (1961)", "Fellow of the Royal Society (1955)", "Acharya P.C. Ray Memorial Award"]
+                },
+                // 10 - Sir T.S. Venkataraman
+                {
+                    name: "Sir Thiruvengadam Srinivasa Venkataraman",
+                    shortName: "Sir T.S. Venkataraman",
+                    image: "T.S.Venkatraman.png",
+                    birth: "1893",
+                    death: "1963",
+                    birthPlace: "Tamil Nadu",
+                    district: "Tamil Nadu",
+                    parents: "Details being researched",
+                    schooling: "Details being researched",
+                    college: "Cambridge University",
+                    jobs: "Director of Imperial Agricultural Research Institute, Director of Sugarcane Breeding Institute Coimbatore, Vice-Chancellor of Madras University",
+                    achievements: [
+                        "Father of the Indian Sugar Industry",
+                        "Developed high-yielding, disease-resistant sugarcane varieties (Co varieties)",
+                        "Revolutionized sugarcane cultivation in India",
+                        "Pioneering research in plant breeding",
+                        "Established scientific sugarcane breeding in India",
+                        "Transformed India from sugar importer to exporter"
+                    ],
+                    impact: "Single-handedly transformed India's sugar industry. The Co varieties he developed are used worldwide and form the basis of modern sugarcane cultivation. Saved India billions in sugar imports.",
+                    awards: ["Knighthood (1943)", "Fellow of the Royal Society", "Padma Vibhushan", "Several honorary doctorates"]
+                },
+                // 11 - Prof. M.S. Ananth
+                {
+                    name: "Prof. Mysore Srinivasa Ananth",
+                    shortName: "Prof. M.S. Ananth",
+                    image: "Prof. M. S. Ananth.jpg",
+                    birth: "Details being researched",
+                    death: "Living",
+                    birthPlace: "Tamil Nadu",
+                    district: "Tamil Nadu",
+                    parents: "Details being researched",
+                    schooling: "Details being researched",
+                    college: "IIT Madras - B.Tech, University of Florida - Ph.D.",
+                    jobs: "Director of IIT Madras (2001-2011), Professor of Chemical Engineering",
+                    achievements: [
+                        "Former Director of IIT Madras (2001-2011)",
+                        "Transformed IIT Madras into a world-class research institution",
+                        "Established IIT Madras Research Park",
+                        "Pioneered industry-academia collaboration in India",
+                        "Expert in process dynamics and control",
+                        "Led major infrastructure development at IIT Madras"
+                    ],
+                    impact: "Transformed IIT Madras during his decade-long tenure as Director. Established the Research Park model that became a template for other IITs. Strengthened industry connections and research output.",
+                    awards: ["Padma Shri", "Distinguished Alumnus Award", "Various academic honors"]
+                },
+                // 12 - Dr. G.S. Venkataraman
+                {
+                    name: "Dr. Gopalasamudram Srinivasan Venkataraman",
+                    shortName: "Dr. G.S. Venkataraman",
+                    image: "Gopalasamudram Sitaraman Venkataraman.jpeg",
+                    birth: "1932 (approx.)",
+                    death: "Living",
+                    birthPlace: "Tamil Nadu",
+                    district: "Tamil Nadu",
+                    parents: "Details being researched",
+                    schooling: "Details being researched",
+                    college: "M.Sc. from Madras University, Ph.D. from University of Pittsburgh",
+                    jobs: "Scientist at Bhabha Atomic Research Centre, Professor at Indian Institute of Science, Director of IGCAR, Distinguished Faculty at Sri Sathya Sai Institute",
+                    achievements: [
+                        "Pioneering research in condensed matter physics and lattice dynamics",
+                        "Contributions to understanding atomic movements in solids",
+                        "Renowned science communicator and author",
+                        "Former Director of Indira Gandhi Centre for Atomic Research",
+                        "Prolific writer on scientific and spiritual topics",
+                        "Combined scientific excellence with spiritual exploration"
+                    ],
+                    impact: "Made complex physics accessible through his writings and lectures. Bridged science and spirituality, inspiring a generation of scientists. His books on physics are used in institutions worldwide.",
+                    awards: ["Padma Shri", "S.N. Bose Medal", "Raja Ramanna Fellow", "Honorary Doctorates from multiple universities"]
+                },
+                // 13 - V. Sasisekharan
+                {
+                    name: "Prof. Viswanathan Sasisekharan",
+                    shortName: "V. Sasisekharan",
+                    image: "Dr V Sasisekharan.jpeg",
+                    birth: "1935",
+                    death: "2008",
+                    birthPlace: "Details being researched",
+                    district: "Tamil Nadu",
+                    parents: "Details being researched",
+                    schooling: "Details being researched",
+                    college: "University of Madras - Ph.D.",
+                    jobs: "Professor at University of Madras, Collaborator at IISc Bangalore",
+                    achievements: [
+                        "Close collaborator of Prof. G.N. Ramachandran",
+                        "Contributed to understanding of protein and polysaccharide structures",
+                        "Work on conformational analysis of biopolymers",
+                        "Extended Ramachandran's work on collagen structure",
+                        "Pioneering research in glycosaminoglycan structures",
+                        "Mentored many structural biologists"
+                    ],
+                    impact: "Extended the legacy of Ramachandran's work in structural biology. His research on polysaccharides contributed to understanding carbohydrate biochemistry. Part of the pioneering molecular biophysics group in India.",
+                    awards: ["Fellow of Indian Academy of Sciences", "INSA Awards", "Academic honors"]
+                }
+            ],
+            MTH: [
+                // 0 - Srinivasa Ramanujan
+                {
+                    name: "Srinivasa Ramanujan Iyengar FRS",
+                    shortName: "Srinivasa Ramanujan",
+                    image: "Srinivasa Ramanujan.jpg",
+                    birth: "December 22, 1887",
+                    death: "April 26, 1920",
+                    birthPlace: "Erode, Tamil Nadu",
+                    district: "Erode District (grew up in Kumbakonam)",
+                    parents: "Father: Kuppuswamy Srinivasa Iyengar (Clerk in sari shop), Mother: Komalatammal (Housewife, temple singer)",
+                    schooling: "Town High School, Kumbakonam (Matriculated with distinctions)",
+                    college: "Government College, Kumbakonam; Pachaiyappa's College, Madras (Did not complete degree); Trinity College, Cambridge - B.Sc. by Research (1916)",
+                    jobs: "Clerk at Madras Port Trust (1912-1914), Research Scholar at Cambridge University (1914-1919)",
+                    achievements: [
+                        "Made extraordinary contributions to mathematical analysis, number theory, infinite series, and continued fractions",
+                        "Compiled over 3,900 results and theorems, most entirely original",
+                        "Pioneered work on partition functions and mock theta functions",
+                        "Discovered the Ramanujan prime and Ramanujan theta function",
+                        "First Indian elected Fellow of the Royal Society (1918)",
+                        "Hardy rated his natural mathematical ability as 100 on a scale where he rated himself 25"
+                    ],
+                    impact: "Revolutionized several areas of mathematics despite having almost no formal training. His 'lost notebook' discovered in 1976 continues to yield new mathematical insights. December 22 is celebrated as National Mathematics Day in India. His work on mock theta functions found applications in string theory and black hole physics decades later.",
+                    awards: ["Fellow of the Royal Society (1918)", "Fellow of Trinity College, Cambridge (1918)", "National Mathematics Day (Dec 22) in his honor", "Ramanujan Prize named after him", "SASTRA Ramanujan Prize for young mathematicians"]
+                },
+                // 1 - Prof. Alladi Ramakrishnan
+                {
+                    name: "Prof. Alladi Ramakrishnan",
+                    shortName: "Prof. Alladi Ramakrishnan",
+                    image: "Alladi Ramakrishnan.jpg",
+                    birth: "August 9, 1923",
+                    death: "June 7, 2008",
+                    birthPlace: "Madras (Chennai), Tamil Nadu",
+                    district: "Chennai",
+                    parents: "Father: Sir Alladi Krishnaswami Iyer (Lawyer, helped draft Indian Constitution)",
+                    schooling: "P.S. High School, Madras",
+                    college: "Presidency College, Madras - B.Sc. (Hons) in Physics; University of Manchester - Ph.D. under M.S. Bartlett",
+                    jobs: "Worked at TIFR under Homi Bhabha, Founder-Director of Institute of Mathematical Sciences (MATSCIENCE) Chennai (1962-1983)",
+                    achievements: [
+                        "Founded the Institute of Mathematical Sciences (MATSCIENCE) in Chennai in 1962",
+                        "Pioneering contributions to stochastic processes and particle physics",
+                        "Developed L-matrix theory in particle physics",
+                        "Published over 150 research papers",
+                        "Invited Nobel laureate Niels Bohr to India, whose support helped establish MATSCIENCE",
+                        "Guided 24 Ph.D. students"
+                    ],
+                    impact: "Created one of India's premier research institutions for mathematics and theoretical physics. MATSCIENCE became a center for world-class research. His vision of combining theoretical physics with mathematics shaped generations of Indian scientists.",
+                    awards: ["Padma Bhushan (1973)", "Fellow of Indian Academy of Sciences", "INSA Senior Scientist", "Meghnad Saha Medal"]
+                },
+                // 2 - Prof. K. Chandrasekharan
+                {
+                    name: "Prof. Komaravolu Srinivasa Chandrasekharan",
+                    shortName: "Prof. K. Chandrasekharan",
+                    image: "K Chandrasekharan.jpg",
+                    birth: "November 21, 1920",
+                    death: "April 13, 2017",
+                    birthPlace: "Machilipatnam, Andhra Pradesh",
+                    district: "Educated in Madras",
+                    parents: "Father: School teacher",
+                    schooling: "High School in Bapatla, Guntur",
+                    college: "Presidency College, Madras - M.A. in Mathematics; University of Madras - Ph.D. (1942) under K. Ananda Rau",
+                    jobs: "Institute for Advanced Study, Princeton (Hermann Weyl's assistant); Founding faculty TIFR School of Mathematics; Professor at ETH Zurich (1965-1988)",
+                    achievements: [
+                        "Founding faculty member of TIFR School of Mathematics",
+                        "Built TIFR into a world-class mathematics research center",
+                        "President of International Mathematical Union (1971-1974)",
+                        "Major contributions to number theory, summability, and elliptic functions",
+                        "Authored influential textbooks on analytic number theory",
+                        "Mentored numerous mathematicians including C.S. Seshadri and M.S. Narasimhan"
+                    ],
+                    impact: "Transformed Indian mathematics by establishing TIFR as a leading global center. His leadership of IMU promoted international mathematical cooperation. His textbooks educated generations of mathematicians worldwide.",
+                    awards: ["Padma Shri", "Shanti Swarup Bhatnagar Prize", "Ramanujan Medal", "Fellow of the Royal Society", "Fellow of American Mathematical Society"]
+                },
+                // 3 - Prof. C.S. Seshadri
+                {
+                    name: "Prof. Conjeevaram Srirangachari Seshadri FRS",
+                    shortName: "Prof. C.S. Seshadri",
+                    image: "CS Seshadri.jpg",
+                    birth: "February 29, 1932",
+                    death: "July 17, 2020",
+                    birthPlace: "Kanchipuram, Tamil Nadu",
+                    district: "Kanchipuram District",
+                    parents: "Eldest of eleven children",
+                    schooling: "Schooling in Kanchipuram and Chennai",
+                    college: "Loyola College, Chennai - B.A. Honours (1953); TIFR Mumbai - Ph.D. (1958)",
+                    jobs: "TIFR School of Mathematics (1953-1984), Institute of Mathematical Sciences Chennai (1984-1989), Founder-Director Chennai Mathematical Institute (1989-2010)",
+                    achievements: [
+                        "Founded Chennai Mathematical Institute (CMI) in 1989",
+                        "Narasimhan-Seshadri theorem - fundamental result in algebraic geometry",
+                        "Developed Standard Monomial Theory for Schubert varieties",
+                        "The Seshadri constant in algebraic geometry named after him",
+                        "One of first four Indians to speak at International Congress of Mathematics (1970)",
+                        "Pioneer in Geometric Invariant Theory"
+                    ],
+                    impact: "Built CMI into a world-class institution integrating undergraduate education with research. His mathematical contributions to algebraic geometry and vector bundles are foundational. Mentored generations of algebraic geometers.",
+                    awards: ["Padma Bhushan (2009)", "Shanti Swarup Bhatnagar Prize", "Fellow of the Royal Society", "Chevalier de l'Ordre National du Mérite (France)", "Third World Academy of Sciences Award", "Fellow of American Mathematical Society"]
+                },
+                // 4 - Prof. M.S. Narasimhan
+                {
+                    name: "Prof. Mudumbai Seshachalu Narasimhan FRS",
+                    shortName: "Prof. M.S. Narasimhan",
+                    image: "MS Narasimhan.jpg",
+                    birth: "June 7, 1932",
+                    death: "May 15, 2021",
+                    birthPlace: "Tandarai, Tamil Nadu",
+                    district: "North Arcot District",
+                    parents: "Born into a farming family; lost father at age 12",
+                    schooling: "Attended school in nearby town (traveled by bullock cart)",
+                    college: "Loyola College, Madras (under Father Racine); TIFR Mumbai - Ph.D. under K. Chandrasekharan; Paris (under Laurent Schwartz)",
+                    jobs: "TIFR School of Mathematics (1953-1992), Head of Mathematics at ICTP Trieste (1992-1999)",
+                    achievements: [
+                        "Narasimhan-Seshadri theorem - landmark in algebraic geometry connecting stable bundles with unitary representations",
+                        "Harder-Narasimhan filtration - fundamental in vector bundle theory",
+                        "Pioneered study of moduli spaces of vector bundles",
+                        "Only Indian to win King Faisal International Prize for Science (2006)",
+                        "First Chairman of National Board of Higher Mathematics",
+                        "Spoke at International Congress of Mathematics (1970)"
+                    ],
+                    impact: "His work laid foundations for the Kobayashi-Hitchin correspondence linking differential and algebraic geometry. Influenced Fields medalists Donaldson and Uhlenbeck. Transformed understanding of vector bundles on Riemann surfaces.",
+                    awards: ["Padma Bhushan (1990)", "King Faisal International Prize (2006)", "Shanti Swarup Bhatnagar Prize", "Srinivasa Ramanujan Medal", "Third World Academy of Sciences Prize", "Ordre National du Mérite (France)"]
+                },
+                // 5 - Dr. S. Minakshisundaram
+                {
+                    name: "Dr. Subbaramiah Minakshisundaram",
+                    shortName: "Dr. S. Minakshisundaram",
+                    image: "S Minakshisundaram.jpg",
+                    birth: "October 12, 1913",
+                    death: "August 13, 1968",
+                    birthPlace: "Kerala (family from Salem, Tamil Nadu)",
+                    district: "Salem District origin",
+                    parents: "Father from Salem, Tamil Nadu",
+                    schooling: "Education in Madras",
+                    college: "Loyola College, Madras - B.A. Honours (1934); University of Madras - D.Sc. (1940) under K. Ananda Rau",
+                    jobs: "Lecturer at Andhra University Waltair, Institute for Advanced Study Princeton (1946-1948), Professor of Mathematical Physics at Andhra University (1950-1968)",
+                    achievements: [
+                        "Created the Minakshisundaram-Pleijel zeta function (with Åke Pleijel)",
+                        "Pioneering work on spectral geometry and heat kernels",
+                        "Minakshisundaram coefficients in heat equation solutions",
+                        "Collaborated with K. Chandrasekharan on 'Typical Means'",
+                        "Invited to Institute for Advanced Study by Robert Oppenheimer",
+                        "Delivered lecture at International Congress of Mathematicians, Edinburgh (1958)"
+                    ],
+                    impact: "His work on the heat kernel and spectral zeta functions became foundational in spectral geometry. The Minakshisundaram-Pleijel zeta function connects analysis, geometry, and number theory. His techniques influence modern mathematical physics.",
+                    awards: ["Fellow of Indian Academy of Sciences", "Invited speaker at ICM Edinburgh (1958)"]
+                },
+                // 6 - Prof. K. Ananda Rau
+                {
+                    name: "Prof. Karur Ananda Rau",
+                    shortName: "Prof. K. Ananda Rau",
+                    image: "K Ananda Rau.jpg",
+                    birth: "September 21, 1893",
+                    death: "January 22, 1966",
+                    birthPlace: "Madras (Chennai), Tamil Nadu",
+                    district: "Chennai",
+                    parents: "Related to R. Ramachandra Rao (Ramanujan's mentor)",
+                    schooling: "Hindu School, Triplicane, Madras",
+                    college: "Presidency College, Madras; King's College, Cambridge - Smith Prize (1917), Fellow of King's College",
+                    jobs: "Professor of Mathematics at Presidency College, Madras (1919-1948); Principal of Presidency College",
+                    achievements: [
+                        "Contemporary and friend of Ramanujan at Cambridge",
+                        "Won prestigious Smith Prize at Cambridge (1917)",
+                        "Major contributions to summability theory and analytic number theory",
+                        "A theorem named after him in Hardy's book 'Divergent Series'",
+                        "Pioneering work on Riemann zeta function",
+                        "Teacher of Chandrasekhar, Chandrasekharan, Minakshisundaram, and many others"
+                    ],
+                    impact: "Founded the Indian school of number theory. His students and mathematical descendants shaped Indian mathematics for generations. The story of Indian mathematics beyond Ramanujan essentially begins with Ananda Rau.",
+                    awards: ["Fellow of King's College, Cambridge", "Smith Prize (1917)", "Foundation Member of Indian Academy of Sciences"]
+                },
+                // 7 - Dr. T. Vijayaraghavan
+                {
+                    name: "Dr. Tirukkannapuram Vijayaraghavan",
+                    shortName: "Dr. T. Vijayaraghavan",
+                    image: "T Vijayaraghavan.jpg",
+                    birth: "November 30, 1902",
+                    death: "April 20, 1955",
+                    birthPlace: "Adoor Agaram, Madras Presidency",
+                    district: "Tamil Nadu",
+                    parents: "Father: Sanskrit and Tamil scholar (Pandit)",
+                    schooling: "Schooling in Madras region",
+                    college: "Presidency College, Madras (under K. Ananda Rau); Oxford University - worked with G.H. Hardy (1925)",
+                    jobs: "Lecturer at Aligarh Muslim University (under André Weil, 1930-1931), Andhra University (1946-1949), First Director of Ramanujan Institute of Mathematics, Madras (1949-1955)",
+                    achievements: [
+                        "Pisot-Vijayaraghavan numbers named after him (with Charles Pisot)",
+                        "Considered spiritual successor to Ramanujan in Madras",
+                        "Major contributions to Diophantine approximation and Tauberian theorems",
+                        "Collaborated with André Weil at Aligarh",
+                        "Founded and directed the Ramanujan Institute of Mathematics",
+                        "Elected Fellow of Indian Academy of Sciences (1934)"
+                    ],
+                    impact: "Pisot-Vijayaraghavan numbers remain fundamental in Diophantine approximation and dynamical systems. His work connecting analysis and number theory influenced multiple mathematical fields. Built the Ramanujan Institute as a research center.",
+                    awards: ["Fellow of Indian Academy of Sciences (1934)", "President of Indian Mathematical Society", "Secretary of Indian Mathematical Society"]
+                },
+                // 8 - Prof. V. Ganapathy Iyer
+                {
+                    name: "Prof. V. Ganapathy Iyer",
+                    shortName: "Prof. V. Ganapathy Iyer",
+                    image: "V Ganapathy Iyer.jpg",
+                    birth: "November 10, 1906",
+                    death: "1987",
+                    birthPlace: "Kozhikode, Kerala",
+                    district: "Tamil Brahmin family",
+                    parents: "Father: Venkatachalam, Mother: Lakshmi",
+                    schooling: "Local schooling in Kozhikode",
+                    college: "Chennai State College - B.A. (1927) First Class Honours; University of Madras - D.Sc. (1938)",
+                    jobs: "Lecturer at Government College, Masulipatnam; Professor and Head of Mathematics, Annamalai University, Chidambaram (1939-1972)",
+                    achievements: [
+                        "One of foremost Indian mathematicians of the 20th century",
+                        "Pioneer of Nevanlinna theory in India (with S.M. Shah)",
+                        "Major contributions to real and complex analysis, especially entire functions",
+                        "President of Indian Mathematical Society (1957-1959)",
+                        "Presided over Golden Jubilee of Indian Mathematical Society (1958)",
+                        "Head of Mathematical Division, Indian Academy of Sciences (1960)"
+                    ],
+                    impact: "Established Annamalai University as a center for mathematical research. Trained numerous doctoral students who became leading mathematicians. His textbook 'Mathematical Analysis' educated generations.",
+                    awards: ["President of Indian Mathematical Society", "Head of Mathematical Division, Indian Academy of Sciences", "Fellow of Indian Academy of Sciences"]
+                },
+                // 9 - Prof. Raghava Sasthri
+                {
+                    name: "Prof. Raghava Sasthri",
+                    shortName: "Prof. Raghava Sasthri",
+                    image: "Raghava Sasthri.jpg",
+                    birth: "Details being researched",
+                    death: "Details being researched",
+                    birthPlace: "Tamil Nadu",
+                    district: "Tamil Nadu",
+                    parents: "Details being researched",
+                    schooling: "Details being researched",
+                    college: "Details being researched",
+                    jobs: "Details being researched",
+                    achievements: [
+                        "Profile information being researched",
+                        "Contributions to mathematics being documented",
+                        "Further details to be added"
+                    ],
+                    impact: "Information being compiled from historical sources.",
+                    awards: ["Details being researched"]
+                }
+            ],
+            POL: [
+                // 0 - C. Rajagopalachari (Rajaji)
+                {
+                    name: "Chakravarti Rajagopalachari",
+                    shortName: "C. Rajagopalachari (Rajaji)",
+                    image: "Rajaji.jpg",
+                    birth: "December 10, 1878",
+                    death: "December 25, 1972",
+                    birthPlace: "Thorapalli, Hosur, Krishnagiri District",
+                    district: "Krishnagiri District, Tamil Nadu",
+                    parents: "Father: Chakravarti Venkatarya Iyengar (Munsiff of Thorapalli), Mother: Singaramma",
+                    schooling: "Hosur and Bangalore schools",
+                    college: "Central College, Bangalore - B.A. (1894); Presidency College, Madras - Law degree (1897)",
+                    jobs: "Lawyer, Premier of Madras Presidency (1937-39), Governor of West Bengal, Governor-General of India (1948-50), Union Home Minister, Chief Minister of Madras (1952-54), Founder of Swatantra Party",
+                    achievements: [
+                        "Last Governor-General of India and only Indian-born to hold the position (1948-1950)",
+                        "First Indian Premier of Madras Presidency (1937-1939)",
+                        "Led Vedaranyam Salt March parallel to Gandhi's Dandi March (1930)",
+                        "Passed Temple Entry Authorization Act allowing Dalits into temples (1939)",
+                        "Founded Swatantra Party - India's first liberal conservative party (1959)",
+                        "Author of acclaimed Tamil Ramayana and English Mahabharata translations"
+                    ],
+                    impact: "Shaped India's transition from British rule to Republic. His tenure as Governor-General marked the peaceful transfer of power. Founded Swatantra Party as an alternative to Congress socialism. His literary works made epics accessible to common people.",
+                    awards: ["Bharat Ratna (1954) - One of first recipients", "Sahitya Akademi Award for Tamil Ramayana"]
+                },
+                // 1 - Sir C.P. Ramaswami Iyer
+                {
+                    name: "Dewan Bahadur Sir Chetput Pattabhiraman Ramaswami Iyer KCSI KCIE",
+                    shortName: "Sir C.P. Ramaswami Iyer",
+                    image: "CP Ramaswami Iyer.jpg",
+                    birth: "November 12, 1879",
+                    death: "September 26, 1966",
+                    birthPlace: "Madras (Chennai), Tamil Nadu",
+                    district: "Ancestral place: Chetput, North Arcot",
+                    parents: "Tamil Brahmin Iyer family from Chetput",
+                    schooling: "Wesley College High School, Madras",
+                    college: "Presidency College, Madras; Madras Law College (1903); London School of Economics - LLB (1932)",
+                    jobs: "Advocate-General of Madras (1920-23), Law Member of Viceroy's Council (1931-36), Dewan of Travancore (1936-47), Vice-Chancellor of Travancore University",
+                    achievements: [
+                        "Dewan of Travancore who modernized the princely state (1936-1947)",
+                        "Issued historic Temple Entry Proclamation allowing all Hindus into temples (1936)",
+                        "First to nationalize road transport in India (Travancore, 1940)",
+                        "Built India's first cement highway (Trivandrum-Kanyakumari)",
+                        "Established FACT - India's first fertilizer plant",
+                        "Appointed India's first woman District Judge (Anna Chandy)",
+                        "Introduced midday meal scheme for school children"
+                    ],
+                    impact: "Transformed Travancore into a model state with progressive reforms. His Temple Entry Proclamation was hailed by Gandhi as epoch-making. Abolished capital punishment, introduced adult franchise. Edwin Montagu called him 'one of the cleverest men in India'.",
+                    awards: ["Knight Commander of the Indian Empire (KCIE) - 1926", "Knight Commander of the Star of India (KCSI) - 1941", "Returned titles at Independence"]
+                },
+                // 2 - T.T. Krishnamachari
+                {
+                    name: "Tiruvallur Thattai Krishnamachari",
+                    shortName: "T.T. Krishnamachari (TTK)",
+                    image: "TT Krishnamachari.jpg",
+                    birth: "November 26, 1899",
+                    death: "March 7, 1974",
+                    birthPlace: "Madras (Chennai), Tamil Nadu",
+                    district: "Chennai",
+                    parents: "Father: T.T. Rangachari (High Court Judge)",
+                    schooling: "Hindu Higher Secondary School, Chennai",
+                    college: "Madras Christian College - Graduate; Visiting Professor of Economics at MCC",
+                    jobs: "Founder of TTK Group (1928), Member of Constituent Assembly, Union Minister of Commerce & Industry, Finance Minister (1956-58, 1964-66)",
+                    achievements: [
+                        "Member of Constitution Drafting Committee - helped frame Indian Constitution",
+                        "Union Finance Minister during two crucial terms",
+                        "Founded TTK Group - famous for Prestige brand",
+                        "Established IDBI, ICICI, and Unit Trust of India",
+                        "Set up three major steel plants in India",
+                        "Introduced capital gains tax, wealth tax, and estate duty"
+                    ],
+                    impact: "Architect of India's industrial and financial infrastructure. His tax reforms modernized India's fiscal system. The financial institutions he created became pillars of Indian economy. TTK Road in Chennai named after him.",
+                    awards: ["Padma Vibhushan", "TTK Road named in his honor", "TTK Auditorium at Music Academy Chennai"]
+                },
+                // 3 - C.R. Pattabhiraman
+                {
+                    name: "Chetput Ramaswami Pattabhiraman",
+                    shortName: "C.R. Pattabhiraman",
+                    image: "CR Pattabhiraman.jpg",
+                    birth: "November 11, 1906",
+                    death: "June 19, 2001",
+                    birthPlace: "Madras (Chennai), Tamil Nadu",
+                    district: "Chennai",
+                    parents: "Father: Sir C.P. Ramaswami Iyer (Dewan of Travancore), Mother: Seethamma",
+                    schooling: "Education in Madras",
+                    college: "Higher education in Madras",
+                    jobs: "Member of Parliament from Kumbakonam (1957-67), Deputy Minister of Labour (1962), Deputy Minister of Information & Broadcasting (1964-66), Minister of Law and Company Affairs (1966-67)",
+                    achievements: [
+                        "Participated in boycott of Simon Commission as young activist",
+                        "Three-term Member of Parliament from Kumbakonam",
+                        "Union Minister for Law and Company Affairs",
+                        "Founded Mylapore Recreation Club",
+                        "Co-founded Madras Cricket Association with P. Subbarayan",
+                        "Excellent sportsman and patron of sports"
+                    ],
+                    impact: "Carried forward his father's legacy in public service. Contributed to legal reforms as Law Minister. Promoted sports and cricket in Tamil Nadu through institutional building.",
+                    awards: ["Served in Nehru's Cabinet", "Recognition for sports promotion"]
+                },
+                // 4 - K. Santhanam
+                {
+                    name: "Kasturiranga Santhanam",
+                    shortName: "K. Santhanam",
+                    image: "K Santhanam.jpg",
+                    birth: "1895",
+                    death: "February 28, 1980",
+                    birthPlace: "Tamil Nadu",
+                    district: "Tamil Nadu (Iyengar Brahmin family)",
+                    parents: "Iyengar Brahmin family",
+                    schooling: "Education in Tamil Nadu",
+                    college: "St. Joseph's College, Trichy - M.A. in Mathematics; Madras Law College - Law degree",
+                    jobs: "Member of Imperial Legislative Assembly (1937-42), Member of Constituent Assembly (1946), Union Minister for Railways and Transport (1948), First Editor of Indian Express (1933-40), Joint Editor of Hindustan Times (1943-48)",
+                    achievements: [
+                        "Member of Constituent Assembly - contributed to citizenship and franchise provisions",
+                        "Chairman of Santhanam Committee on Prevention of Corruption (1962)",
+                        "Committee's work led to establishment of Central Vigilance Commission (1964)",
+                        "First Editor of The Indian Express newspaper",
+                        "Authored 'Code of Conduct for persons in power' (1976)",
+                        "Translated Kalidasa's Shakuntala from Sanskrit"
+                    ],
+                    impact: "Father of India's anti-corruption framework. The Santhanam Committee revolutionized vigilance mechanisms in government. His journalism shaped Indian media. Close associate of Rajaji and Kamaraj in Tamil Nadu politics.",
+                    awards: ["Recognition for anti-corruption work", "Literary contributions through Bharatiya Vidya Bhavan publications"]
+                },
+                // 5 - N. Gopalaswami Iyengar
+                {
+                    name: "Narasimha Gopalaswami Ayyangar",
+                    shortName: "N. Gopalaswami Iyengar",
+                    image: "N Gopalaswami Iyengar.jpg",
+                    birth: "March 31, 1882",
+                    death: "February 10, 1953",
+                    birthPlace: "Tanjore District, Tamil Nadu",
+                    district: "Thanjavur District",
+                    parents: "Tamil Brahmin family",
+                    schooling: "Wesley School, Madras",
+                    college: "Presidency College, Madras; Law College, Madras",
+                    jobs: "ICS Officer, Prime Minister of Jammu & Kashmir (1937-43), Member of Drafting Committee for Constitution, Union Minister for Railways and Transport (1948-52), Defence Minister (1952-53)",
+                    achievements: [
+                        "Member of 7-member Constitution Drafting Committee",
+                        "Prime Minister of Jammu & Kashmir (1937-1943)",
+                        "Chief drafter of Article 370 granting special status to J&K",
+                        "Led India's delegation to UN on Kashmir dispute (1948)",
+                        "Reorganized Indian Railways into six zonal systems",
+                        "Chairman of Committee for Indianisation of Army"
+                    ],
+                    impact: "Shaped India's Constitution as Drafting Committee member. His expertise on Kashmir made him Nehru's key advisor on the state. Modernized Indian Railways during his tenure. Article 370 remained in Constitution until 2019.",
+                    awards: ["Recognition for Constitution drafting", "Distinguished service in civil administration"]
+                },
+                // 6 - R. Venkataraman
+                {
+                    name: "Ramaswamy Venkataraman",
+                    shortName: "R. Venkataraman",
+                    image: "R Venkataraman.jpg",
+                    birth: "December 4, 1910",
+                    death: "January 27, 2009",
+                    birthPlace: "Rajamadam, Pattukottai, Thanjavur District",
+                    district: "Thanjavur District, Tamil Nadu",
+                    parents: "Middle-class Tamil Brahmin family",
+                    schooling: "Govt Boys Higher Secondary School, Pattukottai",
+                    college: "National College, Trichy; Loyola College, Madras - M.A. Economics; Madras Law College",
+                    jobs: "Lawyer (Madras High Court 1935, Supreme Court 1951), Member of Constituent Assembly, Tamil Nadu Industries Minister (1957-67), Union Finance Minister (1980-82), Defence Minister (1982-84), Vice-President (1984-87), President of India (1987-92)",
+                    achievements: [
+                        "8th President of India (1987-1992)",
+                        "Member of Constituent Assembly that drafted the Constitution",
+                        "Father of industrialization in Tamil Nadu as Industries Minister (1957-67)",
+                        "Participated in Quit India Movement - detained for 2 years",
+                        "Worked with four Prime Ministers during presidency",
+                        "Encouraged APJ Abdul Kalam to develop India's missile program"
+                    ],
+                    impact: "Guided India through turbulent political times as President, working with four PMs. Transformed Tamil Nadu into an industrial state. His constitutional knowledge helped maintain stability during political crises. Freedom fighter who rose to highest office.",
+                    awards: ["Tamra Patra for Freedom Struggle participation", "Highest constitutional offices of Vice-President and President"]
+                },
+                // 7 - Dr. H.V. Hande
+                {
+                    name: "Dr. H.V. Hande",
+                    shortName: "Dr. H.V. Hande",
+                    image: "HV Hande.jpg",
+                    birth: "November 28, 1927",
+                    death: "Living",
+                    birthPlace: "Coimbatore, Tamil Nadu",
+                    district: "Coimbatore (Mangalorean ancestry)",
+                    parents: "Family with Mangalore roots",
+                    schooling: "Education in Tamil Nadu",
+                    college: "Medical education - qualified as doctor",
+                    jobs: "Medical Practitioner (from 1950), MLA from Park Town (1967, 1971), MLC (1964, 1978), Tamil Nadu Health Minister (1980-86), Founder of Hande Hospitals",
+                    achievements: [
+                        "Participated in Quit India Movement at age 15 (1942)",
+                        "Health Minister of Tamil Nadu (1980-86) under MGR",
+                        "Transformed Tamil Nadu's public health - ranked first nationally for 3 consecutive years",
+                        "Increased primary health sub-centers from 3,000 to 7,500",
+                        "Organized MGR's treatment at Brooklyn Hospital, New York (1984)",
+                        "Translated Kamba Ramayanam into English prose (1997)",
+                        "Close associate of Rajaji, MGR, and Swatantra Party"
+                    ],
+                    impact: "Revolutionized Tamil Nadu's healthcare infrastructure. Reduced infant mortality and improved primary healthcare access. His decade of work made Tamil Nadu a model state for health parameters. Combined medical practice with public service.",
+                    awards: ["Recognition from Prime Minister Modi", "Headquarters Secretary of AIADMK (founding member)", "Author published by Bharatiya Vidya Bhavan"]
+                }
+            ],
+            DEF: [
+                // 0 - General K. Sundarji
+                {
+                    name: "General Krishnaswamy Sundarji PVSM",
+                    shortName: "General K. Sundarji",
+                    image: "General Sundarji.jpg",
+                    birth: "April 28, 1928",
+                    death: "February 8, 1999",
+                    birthPlace: "Chengalpattu, Madras Presidency",
+                    district: "Chengalpattu District, Tamil Nadu",
+                    parents: "Tamil Hindu Brahmin family",
+                    schooling: "Madras Christian College (left before degree)",
+                    college: "Defence Services Staff College, Wellington; Army Command & General Staff College, Fort Leavenworth, USA; National Defence College, Delhi; M.A. International Studies (Allahabad); M.Sc. Defence Studies (Madras)",
+                    jobs: "14th Chief of Army Staff (1986-1988), Commanding Officer in 1965 & 1971 wars, UN Mission Congo (1963), GOC 1st Armoured Division",
+                    achievements: [
+                        "14th Chief of Army Staff of India (1986-1988)",
+                        "Last former British Indian Army officer to command Indian Army",
+                        "Led Operation Blue Star at Golden Temple (1984)",
+                        "Mastermind of Operation Falcon at Sumdorong Chu against China (1986)",
+                        "Conceived Exercise Brasstacks - largest military exercise (1986-87)",
+                        "Key architect of India's nuclear doctrine",
+                        "Author of 'Blind Men of Hindoostan' - acclaimed strategic analysis"
+                    ],
+                    impact: "Known as 'thinking man's general' - transformed Indian Army's strategy, perceptions and structure. No other chief introduced such major changes in 820-day tenure. First infantry officer to command elite 1st Armoured Division. Shaped India's military doctrine for decades.",
+                    awards: ["Param Vishisht Seva Medal (PVSM)", "Mentioned in Dispatches (Congo, 1963)", "Author of influential military strategy books"]
+                },
+                // 1 - Col. V. Srinivasa
+                {
+                    name: "Colonel V. Srinivasa",
+                    shortName: "Col. V. Srinivasa",
+                    image: "Col V Srinivasa.jpg",
+                    birth: "Details being researched",
+                    death: "Details being researched",
+                    birthPlace: "Tamil Nadu",
+                    district: "Tamil Nadu",
+                    parents: "Details being researched",
+                    schooling: "Details being researched",
+                    college: "Details being researched",
+                    jobs: "Indian Army Officer",
+                    achievements: [
+                        "Profile information being researched",
+                        "Military service details being documented",
+                        "Further details to be added"
+                    ],
+                    impact: "Information being compiled from historical sources.",
+                    awards: ["Details being researched"]
+                },
+                // 2 - Air Marshal R. Rajaram
+                {
+                    name: "Air Marshal Ramaswamy Rajaram DFC",
+                    shortName: "Air Marshal R. Rajaram",
+                    image: "Air Marshal Rajaram.jpg",
+                    birth: "1917",
+                    death: "June 18, 1969",
+                    birthPlace: "Tamil Nadu",
+                    district: "Tamil Brahmin (Iyer) family",
+                    parents: "Father: Rao Bahadur B.S. Ramaswami Aiyer (Indian Service of Engineers, took up flying at age 40)",
+                    schooling: "Education in Madras region",
+                    college: "RAF Staff College, Andover; Imperial Defence College, UK",
+                    jobs: "Commanded No. 1 Squadron IAF (1944-45), First AOC-in-C Eastern Air Command (1963), AOC-in-C Western Air Command (1965 War), Vice Chief of Air Staff, First IAF Commandant of National Defence College",
+                    achievements: [
+                        "One of 'The Ram Brothers' - pioneers of Indian Air Force with brother Air Cdre R. Sitaram",
+                        "Earned flying license at age 17",
+                        "Commanded No. 1 Squadron in Burma Campaign (1944-45)",
+                        "First AOC-in-C of Eastern Air Command (1963)",
+                        "Led Western Air Command in 1965 Indo-Pak War",
+                        "Awarded Distinguished Flying Cross (1945)",
+                        "First IAF officer as Commandant of National Defence College"
+                    ],
+                    impact: "Pioneer who shaped the Indian Air Force from its formative years. His leadership in 1965 war was crucial to Indian victory. The Ram Brothers became legendary figures in IAF history. Air Marshal Rajaram Tennis Trophy instituted in his memory.",
+                    awards: ["Padma Bhushan (1965)", "Distinguished Flying Cross (1945)", "Air Marshal Rajaram Tennis Trophy named after him"]
+                },
+                // 3 - Vice Admiral N. Krishnan
+                {
+                    name: "Vice Admiral Nilakanta Krishnan PVSM DSC",
+                    shortName: "Vice Admiral N. Krishnan",
+                    image: "Vice Admiral Krishnan.jpg",
+                    birth: "June 8, 1919",
+                    death: "January 30, 1982",
+                    birthPlace: "Nagercoil, Tamil Nadu",
+                    district: "Kanyakumari District",
+                    parents: "Father: Rao Bahadur Mahadeva Nilakanta Ayyar (Executive Engineer); Tamil Brahmin Iyer family",
+                    schooling: "IMMTS Dufferin - topped entrance examination",
+                    college: "Royal Navy training; Joint Services Staff College, Latimer, UK",
+                    jobs: "Second Commanding Officer of INS Vikrant, Vice Chief of Naval Staff (1967), FOC-in-C Western Naval Command (1970), FOC-in-C Eastern Naval Command (1971 War)",
+                    achievements: [
+                        "Hero of 1971 Bangladesh Liberation War - commanded Eastern Naval Command",
+                        "First Indian to receive Distinguished Service Cross in Royal Indian Navy (1942)",
+                        "Credited with tricking and destroying Pakistani submarine PNS Ghazi",
+                        "His command earned INS Vikrant crew 2 Mahavir Chakras and 12 Vir Chakras",
+                        "Present at Pakistani surrender at Ramna Race Course",
+                        "Authored 'A Sailor's Story' and 'No Way But Surrender'",
+                        "17 medals adorned his uniform - most decorated naval officer"
+                    ],
+                    impact: "The 'Sailors Admiral' whose innovative strategy destroyed PNS Ghazi and ensured naval dominance in Bay of Bengal. His leadership was crucial to India's decisive victory in 1971. Famous quote: 'If you cut open my chest, embedded in my heart you will see four letters: NAVY.'",
+                    awards: ["Padma Bhushan", "Param Vishisht Seva Medal (PVSM)", "Distinguished Service Cross (DSC) - First in Royal Indian Navy (1942)", "17 medals total"]
+                },
+                // 4 - Major Mukund Varadarajan
+                {
+                    name: "Major Mukund Varadarajan AC",
+                    shortName: "Major Mukund Varadarajan",
+                    image: "Major Mukund Varadarajan.jpg",
+                    birth: "April 12, 1983",
+                    death: "April 25, 2014 (Martyred)",
+                    birthPlace: "Kozhikode, Kerala (family from Paruthipattu, Avadi, Chennai)",
+                    district: "Chennai (ancestral home)",
+                    parents: "Father: R. Varadarajan, Mother: Geetha Varadarajan; Tamil Iyengar family",
+                    schooling: "Schooling in Chennai",
+                    college: "B.Com from Sri Chandrasekharendra Saraswathi Viswa Vidyalaya, Enathur; Officers Training Academy, Chennai (2004)",
+                    jobs: "Commissioned in 22 Rajput Regiment (2006), UN Mission Lebanon, 44 Rashtriya Rifles in Shopian, J&K (2012-2014)",
+                    achievements: [
+                        "Ashoka Chakra (Posthumous) - India's highest peacetime gallantry award",
+                        "Fourth Ashoka Chakra recipient from Tamil Nadu",
+                        "Eliminated three dangerous terrorists including Hizbul Mujahideen district commander in Shopian (2014)",
+                        "Served in UN Mission in Lebanon",
+                        "Inspired Tamil film 'Amaran' (2024) starring Sivakarthikeyan",
+                        "Bust unveiled at Officers Training Academy, Chennai"
+                    ],
+                    impact: "Supreme sacrifice at age 31 while eliminating high-value terrorists. His bravery inspired a generation and the blockbuster film 'Amaran'. Wife Indhu Rebecca Varghese received his Ashoka Chakra from the President. Symbol of courage for young Indians.",
+                    awards: ["Ashoka Chakra (Posthumous) - January 26, 2015", "Bust at Officers Training Academy, Chennai", "Film 'Amaran' based on his life"]
+                }
+            ]
+        };
+
+        // Current selected profile
+        let currentProfile = null;
+
+        // ==================== Sidebar Functions ====================
+        function toggleCategory(header) {
+            const personList = header.nextElementSibling;
+            const isActive = header.classList.contains('active');
+
+            // Toggle current category
+            header.classList.toggle('active');
+            personList.classList.toggle('expanded');
+        }
+
+        function showProfile(category, index) {
+            const profile = profiles[category][index];
+            currentProfile = profile;
+
+            // Hide welcome screen, show profile card
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('profileCard').classList.add('active');
+
+            // Update active state in sidebar
+            document.querySelectorAll('.person-item').forEach(item => item.classList.remove('active'));
+            const categoryMap = { 'SCI': 0, 'MTH': 1, 'POL': 2, 'DEF': 3 };
+            const categoryIndex = categoryMap[category] || 0;
+            const categoryEl = document.querySelectorAll('.category')[categoryIndex];
+            const personItems = categoryEl.querySelectorAll('.person-item');
+            if (personItems[index]) {
+                personItems[index].classList.add('active');
+            }
+
+            // Populate profile data
+            document.getElementById('profileName').textContent = profile.name;
+            document.getElementById('profileDates').innerHTML = `<i class="fas fa-calendar-alt"></i><span>${profile.birth} - ${profile.death}</span>`;
+            document.getElementById('profileTagline').textContent = profile.achievements[0];
+
+            // Set profile image
+            const profileImageEl = document.getElementById('profileImage');
+            if (profile.image) {
+                profileImageEl.innerHTML = `<img src="${profile.image}" alt="${profile.shortName}" onerror="this.parentElement.innerHTML='<i class=\\'fas fa-user\\'></i>'">`;
+            } else {
+                profileImageEl.innerHTML = '<i class="fas fa-user"></i>';
+            }
+
+            // Info cards
+            document.getElementById('birthplaceContent').innerHTML = `<strong>${profile.birthPlace}</strong><br>${profile.district}`;
+            document.getElementById('parentsContent').textContent = profile.parents;
+            document.getElementById('schoolingContent').textContent = profile.schooling;
+            document.getElementById('collegeContent').textContent = profile.college;
+            document.getElementById('careerContent').textContent = profile.jobs;
+
+            // Achievements
+            const achievementsList = document.getElementById('achievementsList');
+            achievementsList.innerHTML = profile.achievements.map(a => `<li>${a}</li>`).join('');
+
+            // Impact
+            document.getElementById('impactText').textContent = profile.impact;
+
+            // Awards
+            const awardsContainer = document.getElementById('awardsContainer');
+            awardsContainer.innerHTML = profile.awards.map(award => `<div class="award-badge">${award}</div>`).join('');
+
+            // Scroll to top of content
+            document.querySelector('.content').scrollTop = 0;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('sidebar').classList.toggle('collapsed');
+        }
+
+        // ==================== Export Functions ====================
+        async function saveAsImage() {
+            const actionButtons = document.getElementById('actionButtons');
+            actionButtons.style.display = 'none';
+
+            try {
+                const profileCard = document.getElementById('profileCard');
+                const canvas = await html2canvas(profileCard, {
+                    scale: 2,
+                    backgroundColor: '#FDF8F0',
+                    logging: false
+                });
+
+                const link = document.createElement('a');
+                link.download = `ATATA_${currentProfile.shortName.replace(/\s+/g, '_')}_Profile.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            } catch (error) {
+                console.error('Error generating image:', error);
+                alert('Error generating image. Please try again.');
+            }
+
+            actionButtons.style.display = 'flex';
+        }
+
+        async function saveAsPDF() {
+            const actionButtons = document.getElementById('actionButtons');
+            actionButtons.style.display = 'none';
+
+            try {
+                const { jsPDF } = window.jspdf;
+                const profileCard = document.getElementById('profileCard');
+
+                const canvas = await html2canvas(profileCard, {
+                    scale: 2,
+                    backgroundColor: '#FDF8F0',
+                    logging: false
+                });
+
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jsPDF('p', 'mm', 'a4');
+
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = pdf.internal.pageSize.getHeight();
+                const imgWidth = canvas.width;
+                const imgHeight = canvas.height;
+
+                const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+                const imgX = (pdfWidth - imgWidth * ratio) / 2;
+                const imgY = 10;
+
+                // Check if content fits on one page
+                const scaledHeight = imgHeight * ratio;
+                if (scaledHeight > pdfHeight - 20) {
+                    // Multi-page handling
+                    let remainingHeight = imgHeight;
+                    let position = 0;
+
+                    while (remainingHeight > 0) {
+                        const pageCanvas = document.createElement('canvas');
+                        pageCanvas.width = imgWidth;
+                        pageCanvas.height = Math.min(remainingHeight, imgHeight * (pdfHeight - 20) / scaledHeight);
+
+                        const ctx = pageCanvas.getContext('2d');
+                        ctx.drawImage(canvas, 0, position, imgWidth, pageCanvas.height, 0, 0, imgWidth, pageCanvas.height);
+
+                        if (position > 0) pdf.addPage();
+                        pdf.addImage(pageCanvas.toDataURL('image/png'), 'PNG', imgX, 10, imgWidth * ratio, pageCanvas.height * ratio);
+
+                        remainingHeight -= pageCanvas.height;
+                        position += pageCanvas.height;
+                    }
+                } else {
+                    pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, scaledHeight);
+                }
+
+                pdf.save(`ATATA_${currentProfile.shortName.replace(/\s+/g, '_')}_Profile.pdf`);
+            } catch (error) {
+                console.error('Error generating PDF:', error);
+                alert('Error generating PDF. Please try again.');
+            }
+
+            actionButtons.style.display = 'flex';
+        }
+
+        function shareOnWhatsApp() {
+            if (!currentProfile) return;
+
+            const text = `
+*🏛️ ATATA - அருந் தொண்டு ஆற்றிய தமிழக அந்தணர்கள்*
+
+*${currentProfile.name}*
+📋 Serial: ${currentProfile.serial}
+📅 ${currentProfile.birth} - ${currentProfile.death}
+📍 ${currentProfile.birthPlace}
+
+*Key Achievements:*
+${currentProfile.achievements.slice(0, 3).map(a => `✦ ${a}`).join('\n')}
+
+*Awards:*
+${currentProfile.awards.slice(0, 4).map(a => `🏆 ${a}`).join('\n')}
+
+*Impact:*
+${currentProfile.impact.substring(0, 200)}...
+
+---
+🌐 Visit: www.atata.com
+*Celebrating Tamil Brahmins who rendered rare service*
+            `.trim();
+
+            const encodedText = encodeURIComponent(text);
+            window.open(`https://wa.me/?text=${encodedText}`, '_blank');
+        }
+
+        // ==================== Visitor Counter ====================
+        function updateVisitorCount() {
+            let count = localStorage.getItem('atata_visitor_count');
+            if (!count) {
+                // Initialize with a base count for demo
+                count = Math.floor(Math.random() * 5000) + 10000;
+            }
+            count = parseInt(count) + 1;
+            localStorage.setItem('atata_visitor_count', count);
+            document.getElementById('visitorCount').textContent = count.toLocaleString();
+        }
+
+        // ==================== Initialize ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            updateVisitorCount();
+
+            // Expand first category by default
+            const firstCategory = document.querySelector('.category-header');
+            if (firstCategory && !firstCategory.classList.contains('active')) {
+                toggleCategory(firstCategory);
+            }
+        });
+    </script>
+</body>
+</html>
