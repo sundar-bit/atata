@@ -1,0 +1,11 @@
+# Build scripts and research scratch files (not part of the deployed site)
+add_music.py
+build_data.py
+build_writing.py
+rebuild.py
+new_categories_data.js
+new_categories_sidebar.html
+naadodi.html
+thumilan.html
+_*.py
+_*.json
