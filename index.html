@@ -157,6 +157,45 @@
             padding-left: 12px;
         }
 
+        .header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+        }
+
+        .living-archive {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 0.75rem;
+            color: var(--primary-gold);
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .header-about-btn {
+            background: linear-gradient(135deg, var(--primary-gold), var(--accent-copper));
+            color: var(--deep-maroon);
+            border: none;
+            border-radius: 25px;
+            padding: 7px 16px;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            box-shadow: 0 3px 10px rgba(201, 162, 39, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .header-about-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(201, 162, 39, 0.45);
+        }
+
         /* ==================== Main Layout ==================== */
         .main-container {
             display: flex;
@@ -339,6 +378,73 @@
         .welcome-instruction i {
             font-size: 1.5rem;
             color: var(--primary-gold);
+        }
+
+        /* ==================== About / Inclusion View ==================== */
+        .about-screen {
+            display: none;
+            max-width: 860px;
+            margin: 0 auto;
+            background: var(--warm-white);
+            border: 2px solid var(--border-gold);
+            border-radius: 15px;
+            padding: 40px 45px;
+            box-shadow: 0 10px 40px var(--shadow-warm);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .about-screen.active {
+            display: block;
+        }
+
+        .about-back-btn {
+            background: transparent;
+            border: 1px solid var(--border-gold);
+            color: var(--primary-maroon);
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 25px;
+            transition: background 0.2s ease;
+        }
+
+        .about-back-btn:hover {
+            background: var(--cream);
+        }
+
+        .about-screen h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary-maroon);
+            margin-bottom: 6px;
+        }
+
+        .about-screen .about-tamil {
+            font-family: 'Noto Sans Tamil', sans-serif;
+            font-size: 1.05rem;
+            color: var(--text-medium);
+            margin-bottom: 20px;
+        }
+
+        .about-screen h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--accent-copper);
+            margin: 30px 0 12px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid var(--border-gold);
+        }
+
+        .about-screen p {
+            color: var(--text-dark);
+            line-height: 1.85;
+            margin-bottom: 14px;
         }
 
         /* ==================== Profile Card ==================== */
@@ -617,19 +723,6 @@
             text-align: center;
         }
 
-        .visitor-counter {
-            background: linear-gradient(135deg, var(--primary-gold), var(--accent-copper));
-            color: var(--deep-maroon);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 4px 10px;
-            border-radius: 25px;
-            font-weight: 600;
-            margin-bottom: 4px;
-            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
-        }
-
         .footer-copyright {
             font-size: 0.75rem;
             margin-bottom: 2px;
@@ -813,8 +906,16 @@
                     <div class="english-translation">(Arun Thondu Attriya Thamizhaga Andhanarkal - Tamil Brahmins who rendered rare service)</div>
                 </div>
             </div>
-            <div class="header-tagline">
-                Celebrating the extraordinary contributions of Tamil Brahmins<br>to Nation Building
+            <div class="header-right">
+                <div class="header-tagline">
+                    Celebrating the extraordinary contributions of Tamil Brahmins<br>to Nation Building
+                </div>
+                <div class="living-archive">
+                    <i class="fas fa-seedling"></i> An evolving collection, updated regularly
+                </div>
+                <button class="header-about-btn" onclick="showAbout()">
+                    <i class="fas fa-circle-info"></i> About &amp; Inclusion Criteria
+                </button>
             </div>
         </div>
     </header>
@@ -1114,6 +1215,27 @@
                 </div>
             </div>
 
+            <!-- About & Inclusion Criteria View -->
+            <div class="about-screen" id="aboutScreen">
+                <button class="about-back-btn" onclick="showWelcome()"><i class="fas fa-arrow-left"></i> Back</button>
+
+                <h2>About This Archive</h2>
+                <div class="about-tamil">அருந் தொண்டு ஆற்றிய தமிழக அந்தணர்கள்</div>
+                <p>ATATA — Arun Thondu Attriya Thamizhaga Andhanarkal — gathers the stories of Tamil Brahmins who, across generations, gave themselves to rare and lasting service: in science and mathematics, in letters and music, in industry and public life, and in the struggle for India's freedom.</p>
+                <p>The phrase <em>arun thondu</em> — rare service — is the heart of this collection. The men and women remembered here were teachers, discoverers, builders, artists, and patriots whose work enriched Tamil Nadu, shaped modern India, and in many cases touched the whole world. Some are famous; many are quietly slipping out of memory. This archive exists to keep their names, their journeys, and their contributions alive for those who come after.</p>
+                <p>It is offered in a spirit of gratitude and remembrance — a way of saying thank you to those who came before, and of giving the young people of today examples worth reaching toward.</p>
+
+                <h3>Who Is Included</h3>
+                <p>A person is recorded here when three things are true: they belong, by origin, to the Tamil Brahmin community; they made a significant and documented contribution in their field; and that contribution left a recognized mark — nationally, globally, or as a foundation within their domain. Both living and departed figures are included, across nine fields and growing.</p>
+                <p>This is a curated collection, not an exhaustive register. New names and new categories are added continually, and the absence of any individual reflects the limits of one ongoing effort rather than any judgment of their worth.</p>
+
+                <h3>Sources and Corrections</h3>
+                <p>These profiles are compiled from public biographies, institutional records, published works, and established historical accounts. Despite careful effort, errors and omissions are possible in a project of this scale. If you spot an inaccuracy, or know of someone who belongs here, please write to [your email / contact link]. Every correction and suggestion is welcomed and reviewed.</p>
+
+                <h3>A Note on Spirit</h3>
+                <p>This archive honors the achievements of one community as an act of heritage and remembrance — never of comparison or claim of precedence. The lives recorded here were lived in service to Tamil Nadu, to India, and to humanity, alongside the contributions of every other community that has shaped this land. To cherish one's own heritage and to respect all others are not in tension; both belong to the same generous spirit in which this collection is offered.</p>
+            </div>
+
             <!-- Profile Card -->
             <div class="profile-card" id="profileCard">
                 <div class="profile-header">
@@ -1238,10 +1360,6 @@
 
     <!-- Footer -->
     <footer>
-        <div class="visitor-counter">
-            <i class="fas fa-eye"></i>
-            <span>Visitors: <strong id="visitorCount">0</strong></span>
-        </div>
         <div class="footer-copyright">
             © 2026 ATATA - Arun Thondu Attriya Thamizhaga Andhanarkal
         </div>
@@ -3256,7 +3374,7 @@
                 {
                     name: "Kalki R. Krishnamurthy",
                     shortName: "Kalki",
-                    image: "Kalki.jpg",
+                    image: "Kalki Krishnamoorthi.jpeg",
                     birth: "September 9, 1899",
                     death: "December 5, 1954",
                     birthPlace: "Puthamangalam, Mayiladuthurai",
@@ -3272,7 +3390,7 @@
                 {
                     name: "N. Pichamoorthi",
                     shortName: "Na. Pichamoorthi",
-                    image: "",
+                    image: "N. Pichamoorthi.jpeg",
                     birth: "August 15, 1900",
                     death: "December 4, 1976",
                     birthPlace: "Kumbakonam, Thanjavur District",
@@ -3304,7 +3422,7 @@
                 {
                     name: "Rasipuram Krishnaswami Iyer Narayanaswami",
                     shortName: "R.K. Narayan",
-                    image: "RK_Narayan.jpg",
+                    image: "Rasipuram Krishnaswami Iyer Narayanaswami.jpeg",
                     birth: "October 10, 1906",
                     death: "May 13, 2001",
                     birthPlace: "Madras (Chennai)",
@@ -3400,7 +3518,7 @@
                 {
                     name: "Ra. Ki. Rangarajan",
                     shortName: "Ra.Ki.Rangarajan",
-                    image: "",
+                    image: "Ra. Ki. Rangarajan.jpeg",
                     birth: "October 5, 1927",
                     death: "August 18, 2012",
                     birthPlace: "Kumbakonam, Rayampettai Reddiarkuli, North Bank",
@@ -3416,7 +3534,7 @@
                 {
                     name: "R. Parthasarathy",
                     shortName: "Indira Parthasarathy",
-                    image: "Indira_Parthasarathy.jpg",
+                    image: "R. Parthasarathy.jpeg",
                     birth: "July 10, 1930",
                     death: "",
                     birthPlace: "Madras (Chennai)",
@@ -3528,7 +3646,7 @@
                 {
                     name: "Vaduvoor K. Duraissami Iyengar",
                     shortName: "Vaduvoor K. Duraissami Iyengar",
-                    image: "",
+                    image: "Vaduvoor K. Duraissami Iyengar.jpg",
                     birth: "Details being researched",
                     death: "Details being researched",
                     birthPlace: "Vaduvoor, Tamil Nadu",
@@ -3544,7 +3662,7 @@
                 {
                     name: "P.S. Ramaiah",
                     shortName: "P.S. Ramaiah",
-                    image: "",
+                    image: "P.S. Ramaiah.jpg",
                     birth: "Details being researched",
                     death: "Details being researched",
                     birthPlace: "Tamil Nadu",
@@ -3656,7 +3774,7 @@
                 {
                     name: "K.R. Kalyanaraman",
                     shortName: "Magaram",
-                    image: "",
+                    image: "K.R. Kalyanaraman.jpeg",
                     birth: "Details being researched",
                     death: "Details being researched",
                     birthPlace: "Tamil Nadu",
@@ -3688,7 +3806,7 @@
                 {
                     name: "Srinivasacharyar",
                     shortName: "Kaa.Sri.Sri",
-                    image: "",
+                    image: "Srinivasacharyar.jpg",
                     birth: "December 15, 1913",
                     death: "July 28, 1999",
                     birthPlace: "Brindavan, Uttar Pradesh (family from Kanchipuram)",
@@ -3741,7 +3859,7 @@
                 {
                     name: "S. Natarajan",
                     shortName: "S. Natarajan (Najan)",
-                    image: "",
+                    image: "S. Natarajan.jpg",
                     birth: "Details being researched",
                     death: "Details being researched",
                     birthPlace: "Tamil Nadu",
@@ -3773,7 +3891,7 @@
                 {
                     name: "Anuthama",
                     shortName: "Anuthama",
-                    image: "",
+                    image: "Anuthama.jpg",
                     birth: "April 16, 1922",
                     death: "December 3, 2010",
                     birthPlace: "Nellore, near Chennai",
@@ -3869,7 +3987,7 @@
                 {
                     name: "Jalakandasupuram Ramaswami Sundaresan",
                     shortName: "J.R. Sundaresan",
-                    image: "",
+                    image: "Jalakandasupuram Ramaswami Sundaresan.jpeg",
                     birth: "June 1, 1932",
                     death: "December 7, 2017",
                     birthPlace: "Jalakandasupuram, Salem, Tamil Nadu",
@@ -4092,12 +4210,31 @@
             personList.classList.toggle('expanded');
         }
 
+        // ==================== View switching ====================
+        function showAbout() {
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('profileCard').classList.remove('active');
+            document.getElementById('aboutScreen').classList.add('active');
+            document.querySelectorAll('.person-item').forEach(item => item.classList.remove('active'));
+            document.querySelector('.content').scrollTop = 0;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showWelcome() {
+            document.getElementById('aboutScreen').classList.remove('active');
+            document.getElementById('profileCard').classList.remove('active');
+            document.getElementById('welcomeScreen').style.display = 'flex';
+            document.querySelectorAll('.person-item').forEach(item => item.classList.remove('active'));
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         function showProfile(category, index) {
             const profile = profiles[category][index];
             currentProfile = profile;
 
-            // Hide welcome screen, show profile card
+            // Hide welcome + about screens, show profile card
             document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('aboutScreen').classList.remove('active');
             document.getElementById('profileCard').classList.add('active');
 
             // Update active state in sidebar
@@ -4268,22 +4405,8 @@ ${currentProfile.impact.substring(0, 200)}...
             window.open(`https://wa.me/?text=${encodedText}`, '_blank');
         }
 
-        // ==================== Visitor Counter ====================
-        function updateVisitorCount() {
-            let count = localStorage.getItem('atata_visitor_count');
-            if (!count) {
-                // Initialize with a base count for demo
-                count = Math.floor(Math.random() * 5000) + 10000;
-            }
-            count = parseInt(count) + 1;
-            localStorage.setItem('atata_visitor_count', count);
-            document.getElementById('visitorCount').textContent = count.toLocaleString();
-        }
-
         // ==================== Initialize ====================
         document.addEventListener('DOMContentLoaded', function() {
-            updateVisitorCount();
-
             // All categories closed by default
         });
     </script>
