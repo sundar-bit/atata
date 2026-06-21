@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Create a professional, elegant website called **ATATA** (www.atata.com) to showcase and celebrate the achievements of Tamil Brahmins who have made significant contributions to society.
+Create a professional, elegant website called **ATATA** (https://atata.in) to showcase and celebrate the achievements of Tamil Brahmins who have made significant contributions to society.
 
 **ATATA** stands for **"Arun Thondu Attriya Thamizhaga Andhanarkal"** (அருந் தொண்டு ஆற்றிய தமிழக அந்தணர்கள்) - meaning "Tamil Brahmins who rendered rare service."
 
