@@ -730,6 +730,22 @@
             font-family: 'Playfair Display', serif;
         }
 
+        .footer-visits {
+            font-size: 0.7rem;
+            color: var(--primary-gold);
+            margin-top: 4px;
+            letter-spacing: 0.3px;
+        }
+
+        .footer-visits i {
+            margin-right: 5px;
+        }
+
+        .footer-visits #visitCount {
+            font-weight: 700;
+            color: var(--cream);
+        }
+
         .footer-credits {
             font-size: 0.7rem;
             color: rgba(253, 248, 240, 0.8);
@@ -1638,7 +1654,25 @@
             Most details have been checked for accuracy. If you notice any inaccuracy, please let us know.<br>
             This is a work in continuous progress — more personalities will be added over time.
         </div>
+        <div class="footer-visits">
+            <i class="fas fa-eye"></i>Visitors: <span id="visitCount">…</span>
+        </div>
     </footer>
+
+    <script>
+        // ==================== Visit Counter ====================
+        (function () {
+            var el = document.getElementById('visitCount');
+            if (!el) return;
+            fetch('https://api.counterapi.dev/v1/atata_in/visits/up')
+                .then(function (r) { return r.json(); })
+                .then(function (d) {
+                    var n = d && (typeof d.count === 'number' ? d.count : parseInt(d.count, 10));
+                    el.textContent = (n || n === 0) ? n.toLocaleString('en-IN') : '—';
+                })
+                .catch(function () { el.textContent = '—'; });
+        })();
+    </script>
 
     <script>
         // ==================== Profile Data ====================
